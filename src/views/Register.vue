@@ -73,6 +73,9 @@
                 {{ validation.firstError("confirmPassword") }}
               </template>
             </vs-input>
+            <div class="vs-input__message vs-input__message--danger">
+              {{ error }}
+            </div>
           </div>
           <div class="flex justify-between items-center mt-2">
             <vs-button type="submit"> Sign in </vs-button>
@@ -80,7 +83,9 @@
           <div
             class="new text-xs text-zinc-400 w-full flex justify-center my-2"
           >
-            Have account?<a href="#">Login</a>
+            Have account?<router-link :to="{ name: 'Login' }"
+              >Login</router-link
+            >
           </div>
         </div>
       </form>
@@ -89,6 +94,7 @@
 </template>
 <script>
 import SimpleVueValidation from "simple-vue-validator";
+import userService from "../services/user.js";
 export default {
   data: () => ({
     email: "",
@@ -97,12 +103,23 @@ export default {
     confirmPassword: "",
     hasVisiblePassword: false,
     hasVisibleConfirmPassword: false,
+    error: "",
   }),
   methods: {
     register() {
       this.$validate().then((success) => {
         if (success) {
-          alert("Validation succeeded!");
+          if (this.getProgress < 80) {
+            return (this.error = "Password not secure!");
+          }
+          userService
+            .register(this.email, this.password, this.name)
+            .then((response) => {
+              if (response.message) {
+                return (this.error = response.message);
+              }
+              this.$router.push({ name: "App" });
+            });
         }
       });
     },

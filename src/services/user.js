@@ -7,25 +7,38 @@ class User {
       email,
       password,
     });
-    storage.set("token", response.accessToken);
-    storage.set("userData", JSON.stringify(response.user));
-    return response;
+    if (response.data.message) {
+      return response.data;
+    }
+    storage.set("token", response.data.accessToken);
+    storage.set("userData", JSON.stringify(response.data.user));
+    return response.data;
   }
   async register(email, password, name) {
-    const response = await Api.request("/user/register", "POST", {
+    const response = await Api.request("/user/registration", "POST", {
       email,
       password,
       name,
     });
-    storage.set("token", response.accessToken);
-    storage.set("userData", JSON.stringify(response.user));
-    return response;
+    if (response.data.message) {
+      return response.data;
+    }
+    storage.set("token", response.data.accessToken);
+    storage.set("userData", JSON.stringify(response.data.user));
+    return response.data;
   }
   async logout() {
     await Api.request("/user/logout", "POST");
     storage.clear();
     window.location.reload();
   }
+  get isAutorized() {
+    const token = storage.get("token");
+    if (token == "" || token == undefined) {
+      return false;
+    }
+    return true;
+  }
 }
 
-export default User();
+export default new User();

@@ -4,7 +4,7 @@ class Api {
   async request(url, method, data = {}) {
     return axios({
       method: method,
-      url: new URL(url, process.env.API_URL),
+      url: new URL(`/api${url}`, process.env.VUE_APP_API_URL),
       data: data,
     });
   }
