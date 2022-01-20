@@ -14,21 +14,26 @@
               icon-after
             >
               <template #icon> @ </template>
+              <template #message-danger>
+                {{ validation.firstError("email") }}
+              </template>
             </vs-input>
           </div>
           <div class="mt-6">
             <vs-input
               type="password"
-              v-model="value"
+              v-model="password"
               label-placeholder="Password"
               :visiblePassword="hasVisiblePassword"
               icon-after
               @click-icon="hasVisiblePassword = !hasVisiblePassword"
-              required
             >
               <template #icon>
                 <i v-if="!hasVisiblePassword" class="bx bx-show-alt"></i>
                 <i v-else class="bx bx-hide"></i>
+              </template>
+              <template #message-danger>
+                {{ validation.firstError("password") }}
               </template>
             </vs-input>
           </div>
@@ -47,15 +52,31 @@
   </div>
 </template>
 <script>
+import SimpleVueValidation from "simple-vue-validator";
 export default {
   data: () => ({
-    value: "",
-    hasVisiblePassword: false,
     email: "",
+    password: "",
+    hasVisiblePassword: false,
   }),
+  validators: {
+    email(value) {
+      return SimpleVueValidation.Validator.value(value).required().email();
+    },
+    password(value) {
+      return SimpleVueValidation.Validator.value(value)
+        .required()
+        .minLength(8)
+        .maxLength(38);
+    },
+  },
   methods: {
     login() {
-      alert(1);
+      this.$validate().then((success) => {
+        if (success) {
+          alert("Validation succeeded!");
+        }
+      });
     },
   },
 };

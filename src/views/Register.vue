@@ -1,7 +1,7 @@
 <template>
   <div class="Login flex justify-center items-center h-screen">
     <div class="drop-shadow-2xl bg-slate-900 formBlock">
-      <form @submit.prevent="login">
+      <form @submit.prevent="register">
         <div>
           <div class="my-6">
             <h1 class="text-4xl font-bold my-7 block">Sign in</h1>
@@ -14,6 +14,9 @@
               icon-after
             >
               <template #icon> @ </template>
+              <template #message-danger>
+                {{ validation.firstError("email") }}
+              </template>
             </vs-input>
           </div>
           <div class="my-6">
@@ -24,12 +27,15 @@
               icon-after
             >
               <template #icon> <i class="bx bx-user"></i> </template>
+              <template #message-danger>
+                {{ validation.firstError("name") }}
+              </template>
             </vs-input>
           </div>
           <div class="mt-6">
             <vs-input
               type="password"
-              v-model="value"
+              v-model="password"
               label-placeholder="Password"
               :progress="getProgress"
               :visiblePassword="hasVisiblePassword"
@@ -40,7 +46,9 @@
                 <i v-if="!hasVisiblePassword" class="bx bx-show-alt"></i>
                 <i v-else class="bx bx-hide"></i>
               </template>
-
+              <template #message-danger>
+                {{ validation.firstError("password") }}
+              </template>
               <template v-if="getProgress >= 100" #message-success>
                 Secure password
               </template>
@@ -49,15 +57,20 @@
           <div class="mt-6">
             <vs-input
               type="password"
-              v-model="value"
-              label-placeholder="Password"
-              :visiblePassword="hasVisiblePassword"
+              v-model="confirmPassword"
+              label-placeholder="Confirm password"
+              :visiblePassword="hasVisibleConfirmPassword"
               icon-after
-              @click-icon="hasVisiblePassword = !hasVisiblePassword"
+              @click-icon="
+                hasVisibleConfirmPassword = !hasVisibleConfirmPassword
+              "
             >
               <template #icon>
-                <i v-if="!hasVisiblePassword" class="bx bx-show-alt"></i>
+                <i v-if="!hasVisibleConfirmPassword" class="bx bx-show-alt"></i>
                 <i v-else class="bx bx-hide"></i>
+              </template>
+              <template #message-danger>
+                {{ validation.firstError("confirmPassword") }}
               </template>
             </vs-input>
           </div>
@@ -75,16 +88,47 @@
   </div>
 </template>
 <script>
+import SimpleVueValidation from "simple-vue-validator";
 export default {
   data: () => ({
-    value: "",
-    hasVisiblePassword: false,
     email: "",
     name: "",
+    password: "",
+    confirmPassword: "",
+    hasVisiblePassword: false,
+    hasVisibleConfirmPassword: false,
   }),
   methods: {
-    login() {
-      alert(1);
+    register() {
+      this.$validate().then((success) => {
+        if (success) {
+          alert("Validation succeeded!");
+        }
+      });
+    },
+  },
+  validators: {
+    email(value) {
+      return SimpleVueValidation.Validator.value(value).required().email();
+    },
+    name(value) {
+      return SimpleVueValidation.Validator.value(value)
+        .required()
+        .minLength(3)
+        .maxLength(16);
+    },
+    password(value) {
+      return SimpleVueValidation.Validator.value(value)
+        .required()
+        .minLength(8)
+        .maxLength(38);
+    },
+    confirmPassword(value) {
+      return SimpleVueValidation.Validator.custom(() => {
+        if (this.password != value) {
+          return "Fields must be the same!";
+        }
+      });
     },
   },
   computed: {
@@ -92,34 +136,15 @@ export default {
       let progress = 0;
 
       // at least one number
-
-      if (/\d/.test(this.value)) {
-        progress += 20;
-      }
-
+      if (/\d/.test(this.password)) progress += 20;
       // at least one capital letter
-
-      if (/(.*[A-Z].*)/.test(this.value)) {
-        progress += 20;
-      }
-
+      if (/(.*[A-Z].*)/.test(this.password)) progress += 20;
       // at menons a lowercase
-
-      if (/(.*[a-z].*)/.test(this.value)) {
-        progress += 20;
-      }
-
+      if (/(.*[a-z].*)/.test(this.password)) progress += 20;
       // more than 5 digits
-
-      if (this.value.length >= 6) {
-        progress += 20;
-      }
-
+      if (this.password.length >= 6) progress += 20;
       // at least one special character
-
-      if (/[^A-Za-z0-9]/.test(this.value)) {
-        progress += 20;
-      }
+      if (/[^A-Za-z0-9]/.test(this.password)) progress += 20;
 
       return progress;
     },

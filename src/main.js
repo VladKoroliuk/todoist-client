@@ -8,6 +8,7 @@ import Vuesax from "vuesax";
 import "vuesax/dist/vuesax.css";
 import "boxicons/css/boxicons.css";
 import "./assets/index.css";
+import SimpleVueValidation from "simple-vue-validator";
 Vue.config.productionTip = false;
 Vue.use(Vuesax, {
   colors: {
@@ -18,6 +19,7 @@ Vue.use(Vuesax, {
     dark: "rgb(36, 33, 69)",
   },
 });
+Vue.use(SimpleVueValidation);
 
 new Vue({
   router,
