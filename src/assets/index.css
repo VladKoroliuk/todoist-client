@@ -1,0 +1,10 @@
+.vs-input {
+  width: 100% !important;
+}
+a {
+  color: #727272 !important;
+  margin-left: 6px;
+}
+a:hover {
+  text-decoration: underline;
+}
