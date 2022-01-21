@@ -8,3 +8,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
+.vs-select-content{
+  z-index: 500;
+}

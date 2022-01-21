@@ -39,6 +39,9 @@ class User {
     }
     return true;
   }
+  get getData() {
+    return storage.get("userData");
+  }
 }
 
 export default new User();

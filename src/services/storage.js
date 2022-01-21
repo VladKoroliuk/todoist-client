@@ -1,6 +1,11 @@
 class Storage {
   get(key) {
-    return localStorage.getItem(key);
+    const data = localStorage.getItem(key);
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      return data;
+    }
   }
   set(key, value) {
     localStorage.setItem(key, value);

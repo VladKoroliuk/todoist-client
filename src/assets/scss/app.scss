@@ -1,0 +1,130 @@
+@import "./vars";
+
+.header {
+  width: 100%;
+  background-color: $primary;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  &__area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-btn {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    &:hover {
+      background-color: lighten($primary, 10%);
+      .header-btn__prompt {
+        display: block;
+        opacity: 1;
+      }
+    }
+    &__prompt {
+      position: absolute;
+      display: none;
+      top: 32px;
+      width: 120px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px 5px;
+      border-radius: 6px;
+      font-size: 12px;
+      //   margin-left: -60px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 600;
+    }
+    &__key {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 20px;
+      color: #fff;
+      background: grey;
+      border-radius: 5px;
+      border: 1px solid #a1a1a1;
+      margin-left: 5px;
+    }
+  }
+  .header-ico {
+    width: 20px;
+    fill: #fff;
+  }
+}
+i {
+  color: #fff;
+  font-size: 25px;
+}
+.main {
+  height: $main-height;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  .navigation {
+    background-color: #fafafa;
+    padding: 20px 0 0 40px;
+    height: calc(100% - 45px);
+    width: 300px;
+    position: absolute;
+    left: 0;
+    transition: 0.3s;
+    .navigation__section-list_body {
+      &:hover {
+        background-color: #f1f1f1;
+      }
+      text-decoration: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: 0.2s;
+      padding: 7px 10px;
+      display: flex;
+      justify-content: space-between;
+      .navigation__section-list_title {
+        display: flex;
+        gap: 12px;
+        color: #000;
+      }
+      .navigation__section-list_task-count {
+        color: #aaa;
+        font-size: 12px;
+      }
+    }
+    .navigation__section-list {
+      margin: 20px 0 20px 0;
+    }
+  }
+  .navigation__closed {
+    left: -300px;
+  }
+  .main-content {
+    width: 100%;
+  }
+}
+
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  &__header {
+    & h4{
+      text-align: center;
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+  &__content {
+  }
+  &__footer {
+  }
+}

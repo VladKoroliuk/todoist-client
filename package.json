@@ -12,12 +12,14 @@
     "autoprefixer": "^9",
     "boxicons": "^2.1.1",
     "core-js": "^3.6.5",
+    "fontisto": "^3.0.4",
+    "material-icons": "^1.10.6",
     "postcss": "^7",
     "simple-vue-validator": "^0.16.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
-    "vuesax": "^4.0.1-alpha.25",
+    "vuesax": "^3.12.2",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
