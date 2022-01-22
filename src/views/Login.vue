@@ -1,7 +1,7 @@
 <template>
   <div class="Login flex justify-center items-center h-screen">
     <div class="drop-shadow-2xl bg-slate-900 formBlock">
-      <form @submit.prevent="login">
+      <form>
         <div>
           <div class="my-6">
             <h1 class="text-4xl font-bold my-7 block">Log in</h1>
@@ -11,12 +11,7 @@
               label-placeholder="Email"
               autocomplete="off"
               v-model="email"
-              icon-after
             >
-              <template #icon> @ </template>
-              <template #message-danger>
-                {{ validation.firstError("email") }}
-              </template>
             </vs-input>
           </div>
           <div class="mt-6">
@@ -24,24 +19,16 @@
               type="password"
               v-model="password"
               label-placeholder="Password"
-              :visiblePassword="hasVisiblePassword"
-              icon-after
-              @click-icon="hasVisiblePassword = !hasVisiblePassword"
             >
-              <template #icon>
-                <i v-if="!hasVisiblePassword" class="bx bx-show-alt"></i>
-                <i v-else class="bx bx-hide"></i>
-              </template>
-              <template #message-danger>
-                {{ validation.firstError("password") }}
-              </template>
             </vs-input>
-            <div class="vs-input__message vs-input__message--danger">
+            <div class="error">
               {{ error }}
             </div>
           </div>
           <div class="flex justify-between items-center mt-2">
-            <vs-button type="submit"> Log in </vs-button>
+            <vs-button color="primary" type="filled" @click="login"
+              >Log in</vs-button
+            >
             <a href="#" class="text-xs">Forgot Password?</a>
           </div>
           <div
@@ -63,7 +50,6 @@ export default {
   data: () => ({
     email: "",
     password: "",
-    hasVisiblePassword: false,
     error: "",
   }),
   validators: {
@@ -79,6 +65,7 @@ export default {
   },
   methods: {
     login() {
+      this.handleError();
       this.$validate().then((success) => {
         if (success) {
           userService.login(this.email, this.password).then((response) => {
@@ -89,6 +76,14 @@ export default {
           });
         }
       });
+    },
+    handleError() {
+      if (this.validation.errors.length == 0) {
+        return;
+      }
+      const firstError = this.validation.errors[0];
+
+      this.error = `${firstError.field} is ${firstError.message}`.toLowerCase();
     },
   },
 };

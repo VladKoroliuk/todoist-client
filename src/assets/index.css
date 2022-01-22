@@ -8,6 +8,19 @@ a {
 a:hover {
   text-decoration: underline;
 }
-.vs-select-content{
+.vs-select-content {
   z-index: 500;
+}
+.con-vs-avatar {
+  display: block;
+}
+.vs-button {
+  font-size: 15px;
+  padding: 8px 15px;
+}
+.error {
+  color: rgb(255, 71, 87);
+  font-size: 0.7rem;
+  position: relative;
+  margin: 10px 0 10px 0;
 }
