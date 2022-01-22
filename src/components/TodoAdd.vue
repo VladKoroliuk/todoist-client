@@ -8,13 +8,13 @@
         <vs-input placeholder="Description" label="Description" />
       </div>
       <div class="flex gap-4">
-        <vs-select class="selectExample" label="Figuras" v-model="select1">
+        <vs-select class="selectExample" label="Figuras">
           <vs-select-item value="aa" text="aa" />
           <vs-select-item value="aa" text="aa" />
           <vs-select-item value="aa" text="aa" />
           <vs-select-item value="aa" text="aa" />
         </vs-select>
-        <vs-select class="selectExample" label="Figuras" v-model="select1">
+        <vs-select class="selectExample" label="Figuras">
           <vs-select-item value="aa" text="aa" />
           <vs-select-item value="aa" text="aa" />
           <vs-select-item value="aa" text="aa" />

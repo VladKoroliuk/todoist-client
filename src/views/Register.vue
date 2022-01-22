@@ -37,12 +37,12 @@
               label-placeholder="Confirm password"
             >
             </vs-input>
-            <div class="error">
-              {{ error }}
-            </div>
+            <form-error
+              :inputError="error"
+              :validation="validation"
+            ></form-error>
           </div>
           <div class="flex justify-between items-center mt-2">
-            <!-- <vs-button type="submit"> Sign in </vs-button> -->
             <vs-button color="primary" type="filled" @click="register"
               >Sign in</vs-button
             >
@@ -62,6 +62,7 @@
 <script>
 import SimpleVueValidation from "simple-vue-validator";
 import userService from "../services/user.js";
+import FormError from "../components/form/FormError.vue";
 export default {
   data: () => ({
     email: "",
@@ -70,9 +71,11 @@ export default {
     confirmPassword: "",
     error: "",
   }),
+  components: {
+    FormError,
+  },
   methods: {
     register() {
-      this.handleError();
       this.$validate().then((success) => {
         if (success) {
           userService
@@ -85,14 +88,6 @@ export default {
             });
         }
       });
-    },
-    handleError() {
-      if (this.validation.errors.length == 0) {
-        return;
-      }
-      const firstError = this.validation.errors[0];
-
-      this.error = `${firstError.field} is ${firstError.message}`.toLowerCase();
     },
   },
   validators: {
@@ -114,7 +109,7 @@ export default {
     confirmPassword(value) {
       return SimpleVueValidation.Validator.custom(() => {
         if (this.password != value) {
-          return "Fields must be the same!";
+          return "The fields must be the same!";
         }
       });
     },

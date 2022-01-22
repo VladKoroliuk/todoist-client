@@ -21,9 +21,10 @@
               label-placeholder="Password"
             >
             </vs-input>
-            <div class="error">
-              {{ error }}
-            </div>
+            <form-error
+              :inputError="error"
+              :validation="validation"
+            ></form-error>
           </div>
           <div class="flex justify-between items-center mt-2">
             <vs-button color="primary" type="filled" @click="login"
@@ -46,12 +47,16 @@
 <script>
 import SimpleVueValidation from "simple-vue-validator";
 import userService from "../services/user.js";
+import FormError from "../components/form/FormError.vue";
 export default {
   data: () => ({
     email: "",
     password: "",
     error: "",
   }),
+  components: {
+    FormError,
+  },
   validators: {
     email(value) {
       return SimpleVueValidation.Validator.value(value).required().email();
@@ -65,7 +70,6 @@ export default {
   },
   methods: {
     login() {
-      this.handleError();
       this.$validate().then((success) => {
         if (success) {
           userService.login(this.email, this.password).then((response) => {
@@ -76,14 +80,6 @@ export default {
           });
         }
       });
-    },
-    handleError() {
-      if (this.validation.errors.length == 0) {
-        return;
-      }
-      const firstError = this.validation.errors[0];
-
-      this.error = `${firstError.field} is ${firstError.message}`.toLowerCase();
     },
   },
 };

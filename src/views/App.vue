@@ -21,8 +21,8 @@
 <script>
 import AppHeader from "../components/TheHeader.vue";
 import AppNavigation from "../components/TheNavigation.vue";
-import userService from "../services/user.js";
 import TodoAddDialog from "../components/TodoAddDialog.vue";
+import userService from "../services/user.js";
 export default {
   components: {
     AppHeader,
@@ -43,6 +43,9 @@ export default {
     openModal() {
       this.popup = true;
     },
+  },
+  mounted() {
+    this.$store.dispatch("loadTodos");
   },
 };
 </script>

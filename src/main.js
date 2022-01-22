@@ -24,7 +24,7 @@ Vue.use(Vuesax, {
   },
 });
 Vue.use(SimpleVueValidation);
-
+Vue.config.devtools = true;
 new Vue({
   router,
   store,
