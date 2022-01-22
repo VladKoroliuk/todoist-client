@@ -11,6 +11,7 @@ import "fontisto/css/fontisto/fontisto.css";
 import "./assets/index.css";
 import "material-icons/iconfont/material-icons.css";
 import SimpleVueValidation from "simple-vue-validator";
+import VueMoment from "vue-moment";
 Vue.config.productionTip = false;
 Vue.use(Vuesax, {
   theme: {
@@ -24,6 +25,7 @@ Vue.use(Vuesax, {
   },
 });
 Vue.use(SimpleVueValidation);
+Vue.use(VueMoment);
 Vue.config.devtools = true;
 new Vue({
   router,
