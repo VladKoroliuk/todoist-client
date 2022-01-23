@@ -1,9 +1,12 @@
 <template>
-  <nav class="navigation" :class="{ navigation__closed: !opened }">
+  <nav class="navigation" :class="{ navigation__closed: !isOpen }">
     <div>
       <ul class="navigation__section-list">
         <li class="navigation__section-list_item">
-          <a class="navigation__section-list_body" href="#">
+          <router-link
+            :to="{ name: 'Section', params: { section: 'indox' } }"
+            class="navigation__section-list_body"
+          >
             <div class="navigation__section-list_title">
               <img :src="require('@/assets/icons/box.svg')" alt="Входящие" />
               <div class="nav-text">Indox</div>
@@ -11,10 +14,13 @@
             <div>
               <span class="navigation__section-list_task-count">1</span>
             </div>
-          </a>
+          </router-link>
         </li>
         <li class="navigation__section-list_item">
-          <a class="navigation__section-list_body" href="#">
+          <router-link
+            :to="{ name: 'Section', params: { section: 'today' } }"
+            class="navigation__section-list_body"
+          >
             <div class="navigation__section-list_title">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,10 +67,13 @@
             <div>
               <span class="navigation__section-list_task-count">1</span>
             </div>
-          </a>
+          </router-link>
         </li>
         <li class="navigation__section-list_item">
-          <a class="navigation__section-list_body" href="#">
+          <router-link
+            class="navigation__section-list_body"
+            :to="{ name: 'Section', params: { section: 'upcoming' } }"
+          >
             <div class="navigation__section-list_title">
               <img src="@/assets/icons/calendar.svg" alt="Входящие" />
               <div class="nav-text">Upcoming</div>
@@ -72,7 +81,7 @@
             <div>
               <span class="navigation__section-list_task-count">1</span>
             </div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -82,7 +91,7 @@
 export default {
   name: "AppNavigation",
   props: {
-    opened: {
+    isOpen: {
       type: Boolean,
       required: false,
       default: true,

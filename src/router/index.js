@@ -1,10 +1,13 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import userService from "../services/user.js";
+
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
 import App from "../views/App.vue";
-import userService from "../services/user.js";
+
+import Section from "../components/TheSection.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -27,6 +30,20 @@ const routes = [
     path: "/app",
     name: "App",
     component: App,
+    children: [
+      {
+        path: ":section",
+        name: "Section",
+        component: Section,
+        // children: [
+        //   {
+        //     path: "task/:id",
+        //     name: "TaskWindow",
+        //     component: Section,
+        //   },
+        // ],
+      },
+    ],
   },
 ];
 
