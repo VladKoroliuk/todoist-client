@@ -8,6 +8,8 @@ import Home from "../views/Home.vue";
 import App from "../views/App.vue";
 
 import Section from "../components/TheSection.vue";
+import TaskWindow from "../components/TheTaskWindow.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -35,13 +37,13 @@ const routes = [
         path: ":section",
         name: "Section",
         component: Section,
-        // children: [
-        //   {
-        //     path: "task/:id",
-        //     name: "TaskWindow",
-        //     component: Section,
-        //   },
-        // ],
+        children: [
+          {
+            path: "task/:id",
+            name: "TaskWindow",
+            component: TaskWindow,
+          },
+        ],
       },
     ],
   },

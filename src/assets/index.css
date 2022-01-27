@@ -18,6 +18,10 @@ a:hover {
   font-size: 15px;
   padding: 8px 15px;
 }
+.vs-popup{
+  width: auto !important;
+  min-width: 600px;
+}
 .error {
   color: rgb(255, 71, 87);
   font-size: 0.7rem;

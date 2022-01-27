@@ -26,5 +26,8 @@ export default {
     todayTasks(state) {
       return state.todos;
     },
+    taskData: (state) => (id) => {
+      return state.todos.filter((t) => t._id == id)[0];
+    },
   },
 };
