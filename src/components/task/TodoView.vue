@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="task__menu-base-btns">
-        <div class="task__menu-base-btns-item">
+        <div class="task__menu-base-btns-item" @click="$emit('edit')">
           <svg width="24" height="24">
             <g fill="none" fill-rule="evenodd">
               <path

@@ -13,7 +13,7 @@
   </div>
 </template>
 <script>
-import TodoTask from "./TodoTask.vue";
+import TodoTask from "./task/TodoTask.vue";
 export default {
   components: {
     TodoTask,
