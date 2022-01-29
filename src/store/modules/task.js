@@ -11,6 +11,9 @@ export default {
     ADD_TODO(state, todo) {
       state.todos.push(todo);
     },
+    PERFORM_TODO(state, id) {
+      state.todos = state.todos.filter((t) => t._id != id);
+    },
   },
   actions: {
     async loadTodos({ commit }) {
@@ -20,6 +23,10 @@ export default {
     async addTodo({ commit }, data) {
       const response = await api.request("/task", "POST", data);
       commit("ADD_TODO", response.data);
+    },
+    async performTask({ commit }, id) {
+      const response = await api.request("/task", "PUT", { id });
+      commit("PERFORM_TODO", response.data._id);
     },
   },
   getters: {
