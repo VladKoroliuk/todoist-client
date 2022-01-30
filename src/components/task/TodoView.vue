@@ -22,7 +22,7 @@
       <div class="task__content-description">
         {{ taskData.description }}
       </div>
-      <div class="task__content-deadline" v-if="isOverdue">
+      <div class="task-deadline" v-if="isOverdue">
         <svg width="12" height="12" viewBox="0 0 12 12" class="calendar_icon">
           <path
             fill="currentColor"
@@ -53,19 +53,21 @@
         </div>
       </div>
       <div class="task__menu-base-btns">
-        <div class="task__menu-base-btns-item" @click="$emit('edit')">
-          <svg width="24" height="24">
-            <g fill="none" fill-rule="evenodd">
-              <path
-                fill="currentColor"
-                d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"
-              ></path>
-              <path
-                stroke="currentColor"
-                d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z"
-              ></path>
-            </g>
-          </svg>
+        <div class="task__menu-base-btns-item">
+          <button @click="$emit('edit')">
+            <svg width="24" height="24">
+              <g fill="none" fill-rule="evenodd">
+                <path
+                  fill="currentColor"
+                  d="M9.5 19h10a.5.5 0 110 1h-10a.5.5 0 110-1z"
+                ></path>
+                <path
+                  stroke="currentColor"
+                  d="M4.42 16.03a1.5 1.5 0 00-.43.9l-.22 2.02a.5.5 0 00.55.55l2.02-.21a1.5 1.5 0 00.9-.44L18.7 7.4a1.5 1.5 0 000-2.12l-.7-.7a1.5 1.5 0 00-2.13 0L4.42 16.02z"
+                ></path>
+              </g>
+            </svg>
+          </button>
           <span class="task__menu-base-btns-item-tooltiptext">Edit</span>
         </div>
         <div class="task__menu-base-btns-item">
@@ -84,20 +86,29 @@
           </svg>
           <span class="task__menu-base-btns-item-tooltiptext">Deadline</span>
         </div>
-
         <div class="task__menu-base-btns-item">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            data-svgs-path="sm1/comments.svg"
+          <button
+            @click="
+              $router.push({
+                name: 'TodoComments',
+                params: { id: taskData._id },
+              })
+            "
           >
-            <path
-              fill="currentColor"
-              fill-rule="nonzero"
-              d="M11.707 20.793A1 1 0 0 1 10 20.086V18H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.5l-2.793 2.793zM11 20.086L14.086 17H19a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h6v3.086z"
-            ></path>
-          </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              data-svgs-path="sm1/comments.svg"
+            >
+              <path
+                fill="currentColor"
+                fill-rule="nonzero"
+                d="M11.707 20.793A1 1 0 0 1 10 20.086V18H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-4.5l-2.793 2.793zM11 20.086L14.086 17H19a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h6v3.086z"
+              ></path>
+            </svg>
+          </button>
+
           <span class="task__menu-base-btns-item-tooltiptext">Comment</span>
         </div>
       </div>

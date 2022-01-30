@@ -10,6 +10,10 @@ import App from "../views/App.vue";
 import Section from "../components/TheSection.vue";
 import TaskWindow from "../components/TheTaskWindow.vue";
 
+import TodoComments from "../components/task/TodoComments.vue";
+import TodoSub from "../components/task/TodoSubTasks.vue";
+import TodoActions from "../components/task/TodoActions.vue";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -39,9 +43,26 @@ const routes = [
         component: Section,
         children: [
           {
-            path: "task/:id",
+            path: "task/:id/",
             name: "TaskWindow",
             component: TaskWindow,
+            children: [
+              {
+                path: "subtasks",
+                name: "TodoSub",
+                component: TodoSub,
+              },
+              {
+                path: "comments",
+                name: "TodoComments",
+                component: TodoComments,
+              },
+              {
+                path: "actions",
+                name: "TodoActions",
+                component: TodoActions,
+              },
+            ],
           },
         ],
       },
