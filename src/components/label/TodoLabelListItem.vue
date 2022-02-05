@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="{ name: 'App' }" class="label-list-item">
+  <router-link
+    :to="{ name: 'Label', params: { labelID: label._id } }"
+    class="label-list-item"
+  >
     <div class="label-list-item__content">
       <div>
         <svg width="20" height="20" :fill="label.color" viewBox="0 0 20 20">

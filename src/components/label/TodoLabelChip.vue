@@ -1,5 +1,8 @@
 <template>
-  <router-link :to="{ name: 'App' }" class="label-chip">
+  <router-link
+    :to="{ name: 'Label', params: { labelID: data._id } }"
+    class="label-chip"
+  >
     <span
       class="label-chip__body"
       :style="{

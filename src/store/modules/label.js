@@ -35,5 +35,8 @@ export default {
     getTaskLabels: (state) => (labelsList) => {
       return state.labels.filter((label) => labelsList.includes(label._id));
     },
+    getLabelData: (state) => (labelID) => {
+      return state.labels.find((label) => (label._id = labelID));
+    },
   },
 };

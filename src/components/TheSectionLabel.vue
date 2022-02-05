@@ -1,9 +1,11 @@
 <template>
   <div class="section">
-    <section-slot>
+    <section-slot :tasks="tasks">
       <template v-slot:header>
         <div>
-          <h1 class="section__title">Label</h1>
+          <h1 class="section__title">
+            {{ labelData.name }}
+          </h1>
         </div>
       </template>
     </section-slot>
@@ -14,6 +16,14 @@ import SectionSlot from "./TheSectionSlot.vue";
 export default {
   components: {
     SectionSlot,
+  },
+  computed: {
+    tasks() {
+      return this.$store.getters.getTasksByLabel(this.$route.params.labelID);
+    },
+    labelData() {
+      return this.$store.getters.getLabelData(this.$route.params.labelID);
+    },
   },
 };
 </script>
