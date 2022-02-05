@@ -1,13 +1,11 @@
 <template>
   <div
     class="task"
-    @click.self="
-      $router.push({ name: 'TaskWindow', params: { id: taskData._id } })
-    "
+    @click="$router.push({ name: 'TaskWindow', params: { id: taskData._id } })"
   >
     <div
       class="checkbox checkbox_task"
-      @click="$store.dispatch('performTask', taskData._id)"
+      @click.stop="$store.dispatch('performTask', taskData._id)"
     >
       <svg class="checkbox-svg">
         <path
@@ -34,13 +32,15 @@
           {{ $moment(taskData.term).fromNow() }}
         </div>
       </div>
+      <div>
+        <todo-label-chip
+          v-for="label in labels"
+          :key="label._id"
+          :data="label"
+        ></todo-label-chip>
+      </div>
     </div>
-    <div
-      class="task__menu"
-      @click.self="
-        $router.push({ name: 'TaskWindow', params: { id: taskData._id } })
-      "
-    >
+    <div class="task__menu">
       <div>
         <div class="task__menu-handler">
           <svg width="24" height="24">
@@ -52,7 +52,7 @@
           </svg>
         </div>
       </div>
-      <div class="task__menu-base-btns">
+      <div class="task__menu-base-btns" @click.stop>
         <div class="task__menu-base-btns-item">
           <button @click="$emit('edit')">
             <svg width="24" height="24">
@@ -108,7 +108,6 @@
               ></path>
             </svg>
           </button>
-
           <span class="task__menu-base-btns-item-tooltiptext">Comment</span>
         </div>
       </div>
@@ -116,6 +115,7 @@
   </div>
 </template>
 <script>
+import TodoLabelChip from "../label/TodoLabelChip.vue";
 export default {
   props: {
     taskData: {
@@ -123,9 +123,15 @@ export default {
       required: true,
     },
   },
+  components: {
+    TodoLabelChip,
+  },
   computed: {
     isOverdue() {
       return this.$moment().diff(this.taskData.term, "days") >= 1;
+    },
+    labels() {
+      return this.$store.getters.getTaskLabels(this.taskData.labels);
     },
   },
 };

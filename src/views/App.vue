@@ -30,8 +30,9 @@ export default {
       return userService.getData;
     },
   },
-  mounted() {
+  created() {
     this.$store.dispatch("loadTodos");
+    this.$store.dispatch("loadLabels");
   },
 };
 </script>

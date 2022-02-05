@@ -12,7 +12,7 @@ import TaskWindow from "../components/TheTaskWindow.vue";
 
 import TodoComments from "../components/task/TodoComments.vue";
 import TodoSub from "../components/task/TodoSubTasks.vue";
-import TodoActions from "../components/task/TodoActions.vue";
+import TodoLabels from "../components/task/TodoLabels.vue";
 
 Vue.use(VueRouter);
 
@@ -58,9 +58,9 @@ const routes = [
                 component: TodoComments,
               },
               {
-                path: "actions",
-                name: "TodoActions",
-                component: TodoActions,
+                path: "labels",
+                name: "TodoLabels",
+                component: TodoLabels,
               },
             ],
           },

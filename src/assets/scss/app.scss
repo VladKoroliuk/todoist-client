@@ -41,7 +41,6 @@ $task-handler-margin: 30px;
       padding: 5px 5px;
       border-radius: 6px;
       font-size: 12px;
-      //   margin-left: -60px;
       opacity: 0;
       transition: opacity 0.3s;
       z-index: 600;
@@ -245,5 +244,47 @@ i {
   &__content{
     display: block;
     min-height: 600px;
+  }
+}
+.label-list-item{
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 8px 5px;
+  transition: .2s;
+  border-radius: 5px;
+  &:hover{
+    background-color: $default-hover;
+    text-decoration: none;
+    .label-list-item__delete{
+      display: block;
+    }
+    .label-list-item__count{
+      display: none;
+    }
+  }
+  &__content{
+    display: flex;
+    gap: 10px;
+  }
+  &__delete{
+    display: none;
+  }
+}
+
+.btn-small{
+  color: $primary;
+  background-color: lighten($primary, 40%);
+  padding: 3px 9px;
+  border-radius: 10px;
+}
+.label-chip {
+  margin-bottom: 5px;
+  &:hover {
+    text-decoration: none;
+  }
+  &__body {
+    padding: 2px 3px;
+    border-radius: 10%;
   }
 }

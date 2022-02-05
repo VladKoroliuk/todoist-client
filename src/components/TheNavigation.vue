@@ -1,5 +1,8 @@
 <template>
   <nav class="navigation" :class="{ navigation__closed: !isOpen }">
+    <vs-popup :active.sync="modal.createLabel" title="">
+      <todo-create-label @close="modal.createLabel = false"></todo-create-label>
+    </vs-popup>
     <div>
       <ul class="navigation__section-list">
         <li class="navigation__section-list_item">
@@ -84,10 +87,26 @@
           </router-link>
         </li>
       </ul>
+      <vs-collapse>
+        <vs-collapse-item>
+          <div slot="header">Projects</div>
+        </vs-collapse-item>
+        <vs-collapse-item>
+          <div slot="header">Labels</div>
+          <div class="flex">
+            <button @click="modal.createLabel = true" class="btn-small my-2">
+              Add label
+            </button>
+          </div>
+          <todo-label-list></todo-label-list>
+        </vs-collapse-item>
+      </vs-collapse>
     </div>
   </nav>
 </template>
 <script>
+import TodoCreateLabel from "./label/TodoCreateLabel.vue";
+import TodoLabelList from "./label/TodoLabelList.vue";
 export default {
   name: "AppNavigation",
   props: {
@@ -97,5 +116,15 @@ export default {
       default: true,
     },
   },
+  components: {
+    TodoCreateLabel,
+    TodoLabelList,
+  },
+  data: () => ({
+    modal: {
+      createLabel: false,
+      createProject: false,
+    },
+  }),
 };
 </script>

@@ -43,6 +43,13 @@
                 {{ $moment(taskData.term).fromNow() }}</span
               >
             </div>
+            <div class="mt-4">
+              <todo-label-chip
+                v-for="label in labels"
+                :key="label._id"
+                :data="label"
+              ></todo-label-chip>
+            </div>
           </div>
         </header>
         <main class="mt-9">
@@ -63,12 +70,12 @@
               <router-link
                 class="task-navigation__item"
                 active-class="task-navigation__item_active"
-                :to="{ name: 'TodoActions' }"
-                >Actions</router-link
+                :to="{ name: 'TodoLabels' }"
+                >Labels</router-link
               >
             </nav>
             <div class="task-menu__content">
-              <router-view></router-view>
+              <router-view :taskData="taskData"></router-view>
             </div>
           </div>
         </main>
@@ -77,10 +84,14 @@
   </div>
 </template>
 <script>
+import TodoLabelChip from "./label/TodoLabelChip.vue";
 export default {
   data: () => ({
     active: true,
   }),
+  components: {
+    TodoLabelChip,
+  },
   watch: {
     active(newValue) {
       if (!newValue) {
@@ -96,6 +107,9 @@ export default {
   computed: {
     taskData() {
       return this.$store.getters.taskData(this.$route.params.id);
+    },
+    labels() {
+      return this.$store.getters.getTaskLabels(this.taskData.labels);
     },
   },
   mounted() {

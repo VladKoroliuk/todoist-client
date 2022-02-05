@@ -8,12 +8,14 @@
 </template>
 <script>
 import TodaySection from "./TheSectionToday.vue";
+import LabelSection from "./TheLabelSection.vue";
 export default {
   data: () => ({
     section: "",
   }),
   components: {
     TodaySection,
+    LabelSection,
   },
   methods: {
     handleSection(section) {
@@ -21,7 +23,9 @@ export default {
         case "today":
           this.section = "TodaySection";
           break;
-
+        case "label":
+          this.section = "LabelSection";
+          break;
         default:
           this.section = "";
           break;

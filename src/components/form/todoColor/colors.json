@@ -1,0 +1,110 @@
+[
+    {
+        "hex": "#fafa",
+        "name": "Pink"
+    },
+    {
+        "hex": "#FF6347",
+        "name": "Tomato"
+    },
+    {
+        "hex": "#DAA520",
+        "name": "Goldenrod"
+    },
+    {
+        "hex": "#9ACD32",
+        "name": "Yellowgreen"
+    },
+    {
+        "hex": "#00FF00",
+        "name": "Lime"
+    },
+    {
+        "hex": "#2E8B57",
+        "name": "Seagreen"
+    },
+    {
+        "hex": "#008080",
+        "name": "Teal"
+    },
+    {
+        "hex": "#00FFFF",
+        "name": "Aqua"
+    },
+    {
+        "hex": "#87CEEB",
+        "name": "Skyblue"
+    },
+    {
+        "hex": "#191970",
+        "name": "Midnightblue"
+    },
+    {
+        "hex": "#000080",
+        "name": "Navy"
+    },
+    {
+        "hex": "#4B0082",
+        "name": "Indigo"
+    },
+    {
+        "hex": "#483D8B",
+        "name": "Darkslateblue"
+    },
+    {
+        "hex": "#DDA0DD",
+        "name": "Plum"
+    },
+    {
+        "hex": "#FF1493",
+        "name": "Deeppink"
+    },
+    {
+        "hex": "#F5F5DC",
+        "name": "Beige"
+    },
+    {
+        "hex": "#F5DEB3",
+        "name": "Wheat"
+    },
+    {
+        "hex": "#FAFAD2",
+        "name": "Lightyellow"
+    },
+    {
+        "hex": "#8B4513",
+        "name": "Saddlebrown"
+    },
+    {
+        "hex": "#D2691E",
+        "name": "Chocolate"
+    },
+    {
+        "hex": "#F4A460",
+        "name": "Sandybrown"
+    },
+    {
+        "hex": "#D2B48C",
+        "name": "Tan"
+    },
+    {
+        "hex": "#BC8F8F",
+        "name": "Rosybrown"
+    },
+    {
+        "hex": "#FFE4E1",
+        "name": "Mistyrose"
+    },
+    {
+        "hex": "#708090",
+        "name": "Slategray"
+    },
+    {
+        "hex": "#B0C4DE",
+        "name": "Lightsteelblue"
+    },
+    {
+        "hex": "#C0C0C0",
+        "name": "Silver"
+    }
+]
