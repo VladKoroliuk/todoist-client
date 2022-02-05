@@ -1,22 +1,20 @@
 <template>
   <div class="section">
-    <header class="section__header">
-      <h1 class="section__title">Today tasks</h1>
-    </header>
-    <div>
-      <ul>
-        <li v-for="task in today" :key="task._id">
-          <todo-task :taskData="task"></todo-task>
-        </li>
-      </ul>
-    </div>
+    <section-slot :tasks="today" :filterFileds="['priotity', 'term', 'text']">
+      <template v-slot:header>
+        <div class="flex gap-2 align-center">
+          <h1 class="section__title">Today tasks</h1>
+          <small class="section__date">Sat 5 Feb</small>
+        </div>
+      </template>
+    </section-slot>
   </div>
 </template>
 <script>
-import TodoTask from "./task/TodoTask.vue";
+import SectionSlot from "./TheSectionSlot.vue";
 export default {
   components: {
-    TodoTask,
+    SectionSlot,
   },
   computed: {
     today() {

@@ -7,14 +7,37 @@ import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
 import App from "../views/App.vue";
 
-import Section from "../components/TheSection.vue";
 import TaskWindow from "../components/TheTaskWindow.vue";
-
 import TodoComments from "../components/task/TodoComments.vue";
 import TodoSub from "../components/task/TodoSubTasks.vue";
 import TodoLabels from "../components/task/TodoLabels.vue";
 
+import TheSectionToday from "../components/TheSectionToday.vue";
+import TheSectionLabel from "../components/TheSectionLabel.vue";
 Vue.use(VueRouter);
+
+const taskMenuRoutes = {
+  path: "task/:id/",
+  name: "TaskWindow",
+  component: TaskWindow,
+  children: [
+    {
+      path: "subtasks",
+      name: "TodoSub",
+      component: TodoSub,
+    },
+    {
+      path: "comments",
+      name: "TodoComments",
+      component: TodoComments,
+    },
+    {
+      path: "labels",
+      name: "TodoLabels",
+      component: TodoLabels,
+    },
+  ],
+};
 
 const routes = [
   {
@@ -38,33 +61,16 @@ const routes = [
     component: App,
     children: [
       {
-        path: ":section",
+        path: "today",
         name: "Section",
-        component: Section,
-        children: [
-          {
-            path: "task/:id/",
-            name: "TaskWindow",
-            component: TaskWindow,
-            children: [
-              {
-                path: "subtasks",
-                name: "TodoSub",
-                component: TodoSub,
-              },
-              {
-                path: "comments",
-                name: "TodoComments",
-                component: TodoComments,
-              },
-              {
-                path: "labels",
-                name: "TodoLabels",
-                component: TodoLabels,
-              },
-            ],
-          },
-        ],
+        component: TheSectionToday,
+        children: [taskMenuRoutes],
+      },
+      {
+        path: "label/:labelID",
+        name: "Label",
+        component: TheSectionLabel,
+        children: [taskMenuRoutes],
       },
     ],
   },
