@@ -1,0 +1,84 @@
+@import "./tailwind.scss";
+@import "./vars.scss";
+@import "./task.scss";
+@import "./header.scss";
+@import "./main.scss";
+@import "./taskMenu.scss";
+
+
+.vs-input {
+  width: 100% !important;
+}
+a {
+  color: #727272 !important;
+  margin-left: 6px;
+}
+a:hover {
+  text-decoration: underline;
+}
+.vs-select-content {
+  z-index: 500;
+}
+.con-vs-avatar {
+  display: block;
+}
+.vs-button {
+  font-size: 15px;
+  padding: 8px 15px;
+}
+.error {
+  color: rgb(255, 71, 87);
+  font-size: 0.7rem;
+  position: relative;
+  margin: 10px 0 10px 0;
+}
+input[type="date"]{
+  color: inherit;
+  position: relative;
+  padding: 0.4rem;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.2);
+  box-sizing: border-box;
+}
+.label-list-item{
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 8px 5px;
+  transition: .2s;
+  border-radius: 5px;
+  &:hover{
+    background-color: $default-hover;
+    text-decoration: none;
+    .label-list-item__delete{
+      display: block;
+    }
+    .label-list-item__count{
+      display: none;
+    }
+  }
+  &__content{
+    display: flex;
+    gap: 10px;
+  }
+  &__delete{
+    display: none;
+  }
+}
+
+.btn-small{
+  color: $primary;
+  background-color: lighten($primary, 40%);
+  padding: 3px 9px;
+  border-radius: 10px;
+}
+.label-chip {
+  margin-bottom: 5px;
+  &:hover {
+    text-decoration: none;
+  }
+  &__body {
+    padding: 2px 3px;
+    border-radius: 10%;
+  }
+}

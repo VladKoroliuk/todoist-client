@@ -1,0 +1,23 @@
+.task-menu{
+    .task-navigation{
+      display: flex;
+      &__item{
+        display: block;
+        width: 33.33%;
+        text-align: center;
+        border-bottom: 1px solid gray;
+        margin: 0;
+        padding-bottom: 8px;
+        font-size: 15px;
+        text-decoration: none;
+      }
+      &__item_active{
+        color: $text-color !important;
+        border-bottom: 1px solid $text-color !important;
+      }
+    }
+    &__content{
+      display: block;
+      min-height: 600px;
+    }
+  }
