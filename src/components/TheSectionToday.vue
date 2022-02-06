@@ -2,7 +2,7 @@
   <div class="section">
     <section-slot
       :tasks="$store.getters.todayTasks"
-      :filterFileds="['priotity', 'term', 'text']"
+      :filterFileds="['priority', 'text']"
     >
       <template v-slot:header>
         <div class="flex gap-2 align-center">
