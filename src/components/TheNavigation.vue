@@ -7,21 +7,23 @@
       <ul class="navigation__section-list">
         <li class="navigation__section-list_item">
           <router-link
-            :to="{ name: 'Section', params: { section: 'indox' } }"
+            :to="{ name: 'Inbox' }"
             class="navigation__section-list_body"
           >
             <div class="navigation__section-list_title">
               <img :src="require('@/assets/icons/box.svg')" alt="Входящие" />
-              <div class="nav-text">Indox</div>
+              <div class="nav-text">Inbox</div>
             </div>
             <div>
-              <span class="navigation__section-list_task-count">1</span>
+              <span class="navigation__section-list_task-count">{{
+                $store.getters.inboxTasks.length
+              }}</span>
             </div>
           </router-link>
         </li>
         <li class="navigation__section-list_item">
           <router-link
-            :to="{ name: 'Section', params: { section: 'today' } }"
+            :to="{ name: 'Today' }"
             class="navigation__section-list_body"
           >
             <div class="navigation__section-list_title">
@@ -60,7 +62,7 @@
                       data-v-05f19722=""
                       style="color: rgb(44, 236, 23)"
                     >
-                      21
+                      {{ $moment().format("DD") }}
                     </tspan>
                   </text>
                 </g>
@@ -68,21 +70,25 @@
               <div class="nav-text">Today</div>
             </div>
             <div>
-              <span class="navigation__section-list_task-count">1</span>
+              <span class="navigation__section-list_task-count">{{
+                $store.getters.todayTasks.length
+              }}</span>
             </div>
           </router-link>
         </li>
         <li class="navigation__section-list_item">
           <router-link
             class="navigation__section-list_body"
-            :to="{ name: 'Section', params: { section: 'upcoming' } }"
+            :to="{ name: 'Upcoming' }"
           >
             <div class="navigation__section-list_title">
               <img src="@/assets/icons/calendar.svg" alt="Входящие" />
               <div class="nav-text">Upcoming</div>
             </div>
             <div>
-              <span class="navigation__section-list_task-count">1</span>
+              <span class="navigation__section-list_task-count">{{
+                $store.getters.upcomingTasks.length
+              }}</span>
             </div>
           </router-link>
         </li>

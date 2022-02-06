@@ -14,6 +14,9 @@ import TodoLabels from "../components/task/TodoLabels.vue";
 
 import TheSectionToday from "../components/TheSectionToday.vue";
 import TheSectionLabel from "../components/TheSectionLabel.vue";
+import TheSectionInbox from "../components/TheSectionInbox.vue";
+import TheSectionUpcoming from "../components/TheSectionUpcoming.vue";
+
 Vue.use(VueRouter);
 
 const taskMenuRoutes = {
@@ -62,8 +65,20 @@ const routes = [
     children: [
       {
         path: "today",
-        name: "Section",
+        name: "Today",
         component: TheSectionToday,
+        children: [taskMenuRoutes],
+      },
+      {
+        path: "inbox",
+        name: "Inbox",
+        component: TheSectionInbox,
+        children: [taskMenuRoutes],
+      },
+      {
+        path: "upcoming",
+        name: "Upcoming",
+        component: TheSectionUpcoming,
         children: [taskMenuRoutes],
       },
       {

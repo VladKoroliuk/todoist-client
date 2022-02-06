@@ -1,4 +1,5 @@
 import api from "../../services/api.js";
+import moment from "moment";
 
 export default {
   state: {
@@ -61,7 +62,17 @@ export default {
   },
   getters: {
     todayTasks(state) {
-      return state.todos;
+      return state.todos.filter(
+        (todo) => moment().diff(todo.term, "days") === 0
+      );
+    },
+    inboxTasks(state) {
+      return state.todos.filter(
+        (todo) => moment().diff(todo.term, "days") >= 0
+      );
+    },
+    upcomingTasks(state) {
+      return state.todos.filter((todo) => moment().diff(todo.term, "days") < 0);
     },
     taskData: (state) => (id) => {
       return state.todos.find((t) => t._id == id);
