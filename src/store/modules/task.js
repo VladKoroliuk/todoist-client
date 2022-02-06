@@ -22,6 +22,10 @@ export default {
       const idx = state.todos.findIndex((t) => t._id == _id);
       state.todos[idx].labels = labels;
     },
+    CHANGE_PRIORITY(state, { _id, priority }) {
+      const idx = state.todos.findIndex((t) => t._id == _id);
+      state.todos[idx].priority = priority;
+    },
   },
   actions: {
     async loadTodos({ commit }) {
@@ -46,6 +50,13 @@ export default {
         labels,
       });
       commit("SET_LABELS", response.data);
+    },
+    async changePriority({ commit }, { taskID, priority }) {
+      const response = await api.request("/task/priority", "PATCH", {
+        taskID,
+        priority,
+      });
+      commit("CHANGE_PRIORITY", response.data);
     },
   },
   getters: {

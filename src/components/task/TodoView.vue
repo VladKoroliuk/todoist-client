@@ -3,16 +3,10 @@
     class="task"
     @click="$router.push({ name: 'TaskWindow', params: { id: taskData._id } })"
   >
-    <div
-      class="checkbox checkbox_task"
-      @click.stop="$store.dispatch('performTask', taskData._id)"
-    >
-      <svg class="checkbox-svg">
-        <path
-          d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"
-        ></path>
-      </svg>
-    </div>
+    <todo-check-box
+      :priority="taskData.priority"
+      @click="$store.dispatch('performTask', taskData._id)"
+    ></todo-check-box>
     <div class="task__content">
       <div class="task__content-name">
         {{ taskData.text }}
@@ -116,6 +110,7 @@
 </template>
 <script>
 import TodoLabelChip from "../label/TodoLabelChip.vue";
+import TodoCheckBox from "./TodoCheckBox.vue";
 export default {
   props: {
     taskData: {
@@ -125,6 +120,7 @@ export default {
   },
   components: {
     TodoLabelChip,
+    TodoCheckBox,
   },
   computed: {
     isOverdue() {

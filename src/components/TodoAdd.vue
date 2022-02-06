@@ -24,7 +24,11 @@
             <vs-select-item value="test" text="test" />
           </vs-select>
           <vs-select label="Priority" v-model="priority">
-            <vs-select-item value="test" text="test" />
+            <vs-select-item value="1" text="1" />
+            <vs-select-item value="2" text="2" />
+            <vs-select-item value="3" text="3" />
+            <vs-select-item value="4" text="4" />
+            <vs-select-item value="5" text="5" />
           </vs-select>
         </div>
       </div>
@@ -42,7 +46,7 @@ export default {
     description: "",
     error: "",
     project: null,
-    priority: null,
+    priority: 1,
     deadline: null,
   }),
   validators: {
@@ -64,6 +68,7 @@ export default {
             text: this.title,
             description: this.description,
             term: this.deadline,
+            priority: this.priority,
           });
           return;
         }

@@ -4,16 +4,10 @@
       <div class="task-menu">
         <header>
           <div class="task-menu__checkbox-block">
-            <div
-              class="checkbox"
-              @click="$store.dispatch('performTask', taskData._id)"
-            >
-              <svg class="checkbox-svg">
-                <path
-                  d="M11.23 13.7l-2.15-2a.55.55 0 0 0-.74-.01l.03-.03a.46.46 0 0 0 0 .68L11.24 15l5.4-5.01a.45.45 0 0 0 0-.68l.02.03a.55.55 0 0 0-.73 0l-4.7 4.35z"
-                ></path>
-              </svg>
-            </div>
+            <todo-check-box
+              :priority="taskData.priority"
+              @click="performTask"
+            ></todo-check-box>
             <div>
               <span
                 ><strong class="task-name">{{ taskData.text }}</strong></span
@@ -50,6 +44,14 @@
                 :data="label"
               ></todo-label-chip>
             </div>
+            <div class="w-24 mt-4 ml-7">
+              <vs-input-number
+                min="1"
+                max="4"
+                v-model="priority"
+                label="priority:"
+              />
+            </div>
           </div>
         </header>
         <main class="mt-9">
@@ -85,12 +87,15 @@
 </template>
 <script>
 import TodoLabelChip from "./label/TodoLabelChip.vue";
+import TodoCheckBox from "./task/TodoCheckBox.vue";
 export default {
   data: () => ({
     active: true,
+    priority: 1,
   }),
   components: {
     TodoLabelChip,
+    TodoCheckBox,
   },
   watch: {
     active(newValue) {
@@ -102,6 +107,18 @@ export default {
           },
         });
       }
+    },
+    priority(newPriority) {
+      this.$store.dispatch("changePriority", {
+        taskID: this.taskData._id,
+        priority: newPriority,
+      });
+    },
+  },
+  methods: {
+    performTask() {
+      this.$store.dispatch("performTask", this.taskData._id);
+      this.active = false;
     },
   },
   computed: {
@@ -116,6 +133,7 @@ export default {
     if (this.$route.name == "TaskWindow") {
       this.$router.push({ name: "TodoSub" });
     }
+    this.priority = this.taskData.priority;
   },
 };
 </script>
