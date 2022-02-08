@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <section-slot :tasks="tasks">
+    <section-slot :tasks="tasks" :filterFileds="['text', 'priority']">
       <template v-slot:header>
         <div>
           <h1 class="section__title">

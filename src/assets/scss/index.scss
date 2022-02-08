@@ -5,6 +5,7 @@
 @import "./main.scss";
 @import "./taskMenu.scss";
 @import "./section.scss";
+@import "./comment.scss";
 
 .vs-input {
   width: 100% !important;
@@ -22,10 +23,10 @@ a:hover {
 .con-vs-avatar {
   display: block;
 }
-.vs-button {
-  font-size: 15px;
-  padding: 8px 15px;
-}
+// .vs-button {
+//   font-size: 15px;
+//   padding: 8px 15px;
+// }
 .error {
   color: rgb(255, 71, 87);
   font-size: 0.7rem;
@@ -81,4 +82,13 @@ input[type="date"]{
     padding: 2px 3px;
     border-radius: 10%;
   }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 9em;
+  background-color: rgb(190, 190, 190);
 }

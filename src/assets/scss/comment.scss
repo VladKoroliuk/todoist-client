@@ -1,0 +1,17 @@
+.comment {
+  display: flex;
+  gap: 10px;
+  &__body {
+    margin-top: 10px;
+  }
+  &__header-name {
+    font-weight: 700;
+    margin-right: 8px;
+    display: inline-block;
+    font-size: 14px;
+  }
+  &__header-time{
+      font-size: 12px;
+      color: gray;
+  }
+}
