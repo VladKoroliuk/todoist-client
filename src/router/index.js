@@ -21,22 +21,18 @@ Vue.use(VueRouter);
 
 const taskMenuRoutes = {
   path: "task/:id/",
-  name: "TaskWindow",
   component: TaskWindow,
   children: [
     {
       path: "subtasks",
-      name: "TodoSub",
       component: TodoSub,
     },
     {
       path: "comments",
-      name: "TodoComments",
       component: TodoComments,
     },
     {
       path: "labels",
-      name: "TodoLabels",
       component: TodoLabels,
     },
   ],
@@ -67,7 +63,30 @@ const routes = [
         path: "today",
         name: "Today",
         component: TheSectionToday,
-        children: [taskMenuRoutes],
+        children: [
+          {
+            path: "task/:id/",
+            name: "TaskWindow",
+            component: TaskWindow,
+            children: [
+              {
+                path: "subtasks",
+                name: "TodoSub",
+                component: TodoSub,
+              },
+              {
+                path: "comments",
+                name: "TodoComments",
+                component: TodoComments,
+              },
+              {
+                path: "labels",
+                name: "TodoLabels",
+                component: TodoLabels,
+              },
+            ],
+          },
+        ],
       },
       {
         path: "inbox",

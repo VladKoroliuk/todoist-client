@@ -101,10 +101,7 @@ export default {
     active(newValue) {
       if (!newValue) {
         this.$router.push({
-          name: "Section",
-          params: {
-            section: this.$route.params.section,
-          },
+          name: this.$route.matched[1].name,
         });
       }
     },

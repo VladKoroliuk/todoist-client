@@ -33,6 +33,10 @@ export default {
   created() {
     this.$store.dispatch("loadTodos");
     this.$store.dispatch("loadLabels");
+
+    if (this.$route.name == "App") {
+      this.$router.push({ name: "Today" });
+    }
   },
 };
 </script>
