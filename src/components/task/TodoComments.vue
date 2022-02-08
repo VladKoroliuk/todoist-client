@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import TodoComment from "../TodoComment.vue";
+import TodoComment from "./TodoComment.vue";
 import CommentService from "../../services/comment.js";
 export default {
   data: () => ({

@@ -39,7 +39,7 @@
 </template>
 <script>
 import SimpleVueValidation from "simple-vue-validator";
-import FormError from "../components/form/FormError.vue";
+import FormError from "../form/FormError.vue";
 export default {
   data: () => ({
     title: "",

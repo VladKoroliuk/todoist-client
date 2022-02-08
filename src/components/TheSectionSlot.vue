@@ -26,13 +26,18 @@
         </li>
       </ul>
     </div>
+    <div>
+      <todo-add-collapse></todo-add-collapse>
+    </div>
   </div>
 </template>
 <script>
 import TodoTask from "./task/TodoTask.vue";
+import TodoAddCollapse from "./task/TodoAddCollapse.vue";
 export default {
   components: {
     TodoTask,
+    TodoAddCollapse,
   },
   props: {
     tasks: {
