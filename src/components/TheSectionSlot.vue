@@ -20,11 +20,7 @@
       </div>
     </header>
     <div>
-      <ul>
-        <li v-for="task in sortedTasks" :key="task._id">
-          <todo-task :taskData="task"></todo-task>
-        </li>
-      </ul>
+      <todo-list :tasks="sortedTasks"></todo-list>
     </div>
     <div>
       <todo-add-collapse></todo-add-collapse>
@@ -32,12 +28,12 @@
   </div>
 </template>
 <script>
-import TodoTask from "./task/TodoTask.vue";
 import TodoAddCollapse from "./task/TodoAddCollapse.vue";
+import TodoList from "./task/TodoList.vue";
 export default {
   components: {
-    TodoTask,
     TodoAddCollapse,
+    TodoList,
   },
   props: {
     tasks: {

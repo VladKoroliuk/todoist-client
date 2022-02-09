@@ -60,16 +60,34 @@ export default {
   components: {
     FormError,
   },
+  props: {
+    parentID: {
+      type: String,
+      required: false,
+      default: null,
+    },
+  },
   methods: {
     add() {
+      const newTask = {
+        text: this.title,
+        description: this.description,
+        term: this.deadline,
+        priority: this.priority,
+      };
+
+      if (this.parentID) {
+        newTask.parentID = this.parentID;
+      }
+
       this.$validate().then((success) => {
         if (success) {
-          this.$store.dispatch("addTodo", {
-            text: this.title,
-            description: this.description,
-            term: this.deadline,
-            priority: this.priority,
-          });
+          this.$store.dispatch("addTodo", newTask);
+          this.title = "";
+          this.description = "";
+          this.priority = 1;
+          this.project = null;
+          this.$emit("close");
           return;
         }
       });

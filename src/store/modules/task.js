@@ -61,24 +61,32 @@ export default {
     },
   },
   getters: {
-    todayTasks(state) {
-      return state.todos.filter(
+    parentTasks(state) {
+      return state.todos.filter((todo) => !todo.parentID);
+    },
+    todayTasks(state, getters) {
+      return getters.parentTasks.filter(
         (todo) => moment().diff(todo.term, "days") === 0
       );
     },
-    inboxTasks(state) {
-      return state.todos.filter(
+    inboxTasks(state, getters) {
+      return getters.parentTasks.filter(
         (todo) => moment().diff(todo.term, "days") >= 0
       );
     },
-    upcomingTasks(state) {
-      return state.todos.filter((todo) => moment().diff(todo.term, "days") < 0);
+    upcomingTasks(state, getters) {
+      return getters.parentTasks.filter(
+        (todo) => moment().diff(todo.term, "days") < 0
+      );
+    },
+    subTasks: (state) => (parentID) => {
+      return state.todos.filter((todo) => todo.parentID == parentID);
     },
     taskData: (state) => (id) => {
       return state.todos.find((t) => t._id == id);
     },
-    getTasksByLabel: (state) => (labelID) => {
-      return state.todos.filter((t) => t.labels.includes(labelID));
+    getTasksByLabel: (state, getters) => (labelID) => {
+      return getters.parentTasks.filter((t) => t.labels.includes(labelID));
     },
     countTasksByLabel: (state, getters) => (labelID) => {
       return getters.getTasksByLabel(labelID).length;

@@ -17,7 +17,7 @@
       >Close</vs-button
     >
     <div v-if="isOpen">
-      <todo-add></todo-add>
+      <todo-add :parentID="parentID" @close="isOpen = false"></todo-add>
     </div>
   </div>
 </template>
@@ -26,6 +26,13 @@ import TodoAdd from "./TodoAdd.vue";
 export default {
   components: {
     TodoAdd,
+  },
+  props: {
+    parentID: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   data: () => ({
     isOpen: false,
