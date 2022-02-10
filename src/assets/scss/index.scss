@@ -6,16 +6,10 @@
 @import "./taskMenu.scss";
 @import "./section.scss";
 @import "./comment.scss";
+@import "./settings.scss";
 
 .vs-input {
   width: 100% !important;
-}
-a {
-  color: #727272 !important;
-  margin-left: 6px;
-}
-a:hover {
-  text-decoration: underline;
 }
 .vs-select-content {
   z-index: 500;
@@ -23,10 +17,6 @@ a:hover {
 .con-vs-avatar {
   display: block;
 }
-// .vs-button {
-//   font-size: 15px;
-//   padding: 8px 15px;
-// }
 .error {
   color: rgb(255, 71, 87);
   font-size: 0.7rem;

@@ -6,6 +6,7 @@ import VueMoment from "vue-moment";
 import Vuesax from "vuesax/dist/vuesax.common.js";
 import SimpleVueValidation from "simple-vue-validator";
 import theme from "./vs-theme.js";
+import vClickOutside from "./directives/v-click-outside.js";
 import "./assets/scss/index.scss";
 import "vuesax/dist/vuesax.css";
 import "./plugins/axios";
@@ -18,7 +19,7 @@ Vue.use(SimpleVueValidation);
 Vue.use(VueMoment);
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
-
+Vue.directive("click-outside", vClickOutside);
 new Vue({
   router,
   store,

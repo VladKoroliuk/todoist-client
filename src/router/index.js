@@ -6,6 +6,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Home from "../views/Home.vue";
 import App from "../views/App.vue";
+import Settings from "../views/Settings.vue";
 
 import TaskWindow from "../components/TheTaskWindow.vue";
 import TodoComments from "../components/task/TodoComments.vue";
@@ -16,6 +17,9 @@ import TheSectionToday from "../components/TheSectionToday.vue";
 import TheSectionLabel from "../components/TheSectionLabel.vue";
 import TheSectionInbox from "../components/TheSectionInbox.vue";
 import TheSectionUpcoming from "../components/TheSectionUpcoming.vue";
+import SettingsAccount from "../components/settings/SettingsAccount.vue";
+import SettingsTheme from "../components/settings/SettingsTheme.vue";
+import SettingsGeneral from "../components/settings/SettingsGeneral.vue";
 
 Vue.use(VueRouter);
 
@@ -105,6 +109,28 @@ const routes = [
         name: "Label",
         component: TheSectionLabel,
         children: [taskMenuRoutes],
+      },
+    ],
+  },
+  {
+    path: "/app/settings",
+    name: "Settings",
+    component: Settings,
+    children: [
+      {
+        path: "account",
+        name: "SettingsAccount",
+        component: SettingsAccount,
+      },
+      {
+        path: "theme",
+        name: "SettingsTheme",
+        component: SettingsTheme,
+      },
+      {
+        path: "general",
+        name: "SettingsGeneral",
+        component: SettingsGeneral,
       },
     ],
   },
