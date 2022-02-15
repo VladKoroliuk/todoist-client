@@ -33,6 +33,7 @@
               color="success"
               :text="user.name.slice(0, 1)"
               @click="isProfileMenuOpen = true"
+              :src="avatarLink"
             />
           </button>
           <div class="user-profile-menu" v-if="isProfileMenuOpen">
@@ -44,6 +45,7 @@
                       :text="user.name.slice(0, 1)"
                       color="success"
                       size="40px"
+                      :src="avatarLink"
                     ></vs-avatar>
                   </div>
                   <div>
@@ -141,6 +143,7 @@
   </div>
 </template>
 <script>
+import userService from "../services/user.js";
 import TodoAdd from "./task/TodoAdd.vue";
 export default {
   name: "AppHeader",
@@ -152,6 +155,11 @@ export default {
     user: {
       required: true,
       type: Object,
+    },
+  },
+  computed: {
+    avatarLink() {
+      return userService.avatar;
     },
   },
   methods: {

@@ -82,3 +82,16 @@ input[type="date"]{
   border-radius: 9em;
   background-color: rgb(190, 190, 190);
 }
+.con-vs-avatar{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.vs-avatar--con-img{
+  display: flex;
+  align-items: center;
+  & img {
+    max-width: 200% !important;
+    width: 190% !important;
+  }
+}

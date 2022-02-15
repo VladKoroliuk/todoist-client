@@ -38,3 +38,10 @@
     margin-left: 5px;
   }
 }
+.settings-account {
+  &__avatar-section{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}

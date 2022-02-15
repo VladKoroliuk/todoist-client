@@ -2,6 +2,24 @@ import Api from "./api.js";
 import storage from "./storage.js";
 
 class User {
+  get isAutorized() {
+    const token = storage.get("token");
+    if (token == "" || token == undefined) {
+      return false;
+    }
+    return true;
+  }
+  get getData() {
+    return storage.get("userData");
+  }
+  get avatar() {
+    const url = new URL(
+      `api/user/avatar/${this.getData.id}.jpg`,
+      process.env.VUE_APP_API_URL
+    );
+
+    return url.href;
+  }
   async login(email, password) {
     const response = await Api.request("/user/login", "POST", {
       email,
@@ -32,15 +50,22 @@ class User {
     storage.clear();
     window.location.reload();
   }
-  get isAutorized() {
-    const token = storage.get("token");
-    if (token == "" || token == undefined) {
-      return false;
+  async changeName(name) {
+    const response = await Api.request("/user/name", "PATCH", { name });
+    if (response.data.message) {
+      return response.data;
     }
-    return true;
+    await this.logout();
   }
-  get getData() {
-    return storage.get("userData");
+  async uploadAvatar(avatar) {
+    if (avatar.size > 1000 * 1000 * 4 && avatar.type != "image/jpeg") {
+      return "some error";
+    }
+
+    const formData = new FormData();
+    formData.append("avatar", avatar);
+
+    await Api.request("/user/avatar", "POST", formData, "image/jpeg");
   }
 }
 
