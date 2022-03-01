@@ -6,7 +6,7 @@
     >
       <template v-slot:header>
         <div class="flex gap-2 align-center">
-          <h1 class="section__title">Inbox tasks</h1>
+          <h1 class="section__title">{{ $t("sectionHeaders.inboxTasks") }}</h1>
         </div>
       </template>
     </section-slot>

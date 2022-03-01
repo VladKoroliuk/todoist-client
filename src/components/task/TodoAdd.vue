@@ -3,14 +3,20 @@
     <form>
       <div class="flex gap-3 flex-col">
         <div>
-          <vs-input placeholder="Title" label="Title" v-model="title" />
+          <vs-input
+            :placeholder="$t('title')"
+            :label="$t('title')"
+            v-model="title"
+          />
         </div>
         <div>
-          <vs-textarea placeholder="Description" v-model="description" />
+          <vs-textarea :placeholder="$t('description')" v-model="description" />
         </div>
         <div>
           <div>
-            <label class="vs-input--label" for="deadLine">Deadline</label>
+            <label class="vs-input--label" for="deadLine">{{
+              $t("deadline")
+            }}</label>
           </div>
           <input
             type="date"
@@ -20,10 +26,10 @@
           />
         </div>
         <div class="flex gap-4">
-          <vs-select label="Project" v-model="project">
+          <vs-select :label="$t('project')" v-model="project">
             <vs-select-item value="test" text="test" />
           </vs-select>
-          <vs-select label="Priority" v-model="priority">
+          <vs-select :label="$t('priority')" v-model="priority">
             <vs-select-item value="1" text="1" />
             <vs-select-item value="2" text="2" />
             <vs-select-item value="3" text="3" />
@@ -34,7 +40,7 @@
       </div>
       <form-error :validation="validation"></form-error>
     </form>
-    <vs-button class="my-5 w-full" @click="add"> Add task </vs-button>
+    <vs-button class="my-5 w-full" @click="add">{{ $t("addTask") }}</vs-button>
   </div>
 </template>
 <script>

@@ -11,8 +11,8 @@
             class="navigation__section-list_body"
           >
             <div class="navigation__section-list_title">
-              <img :src="require('@/assets/icons/box.svg')" alt="Входящие" />
-              <div class="nav-text">Inbox</div>
+              <img :src="require('@/assets/icons/box.svg')" />
+              <div class="nav-text">{{ $t("inbox") }}</div>
             </div>
             <div>
               <span class="navigation__section-list_task-count">{{
@@ -67,7 +67,7 @@
                   </text>
                 </g>
               </svg>
-              <div class="nav-text">Today</div>
+              <div class="nav-text">{{ $t("today") }}</div>
             </div>
             <div>
               <span class="navigation__section-list_task-count">{{
@@ -82,8 +82,8 @@
             :to="{ name: 'Upcoming' }"
           >
             <div class="navigation__section-list_title">
-              <img src="@/assets/icons/calendar.svg" alt="Входящие" />
-              <div class="nav-text">Upcoming</div>
+              <img src="@/assets/icons/calendar.svg" />
+              <div class="nav-text">{{ $t("upcoming") }}</div>
             </div>
             <div>
               <span class="navigation__section-list_task-count">{{
@@ -95,13 +95,16 @@
       </ul>
       <vs-collapse>
         <vs-collapse-item>
-          <div slot="header">Projects</div>
+          <div slot="header">{{ $t("projects") }}</div>
+          <div class="flex">
+            <button class="btn-small my-2">{{ $t("addProject") }}</button>
+          </div>
         </vs-collapse-item>
         <vs-collapse-item>
-          <div slot="header">Labels</div>
+          <div slot="header">{{ $t("labels") }}</div>
           <div class="flex">
             <button @click="modal.createLabel = true" class="btn-small my-2">
-              Add label
+              {{ $t("addLabels") }}
             </button>
           </div>
           <todo-label-list></todo-label-list>

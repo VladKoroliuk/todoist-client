@@ -6,7 +6,9 @@
     >
       <template v-slot:header>
         <div class="flex gap-2 align-center">
-          <h1 class="section__title">Upcoming tasks</h1>
+          <h1 class="section__title">
+            {{ $t("sectionHeaders.upcomingTasks") }}
+          </h1>
         </div>
       </template>
     </section-slot>

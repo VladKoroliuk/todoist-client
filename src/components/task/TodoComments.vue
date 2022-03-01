@@ -12,7 +12,7 @@
     </div>
     <div class="task-comments__menu">
       <vs-input placeholder="Your comment" v-model="commentText"></vs-input>
-      <vs-button @click="createComment">Send</vs-button>
+      <vs-button @click="createComment">{{ $t("send") }}</vs-button>
     </div>
   </div>
 </template>

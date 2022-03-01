@@ -1,6 +1,6 @@
 <template>
   <nav class="settings-nav">
-    <h3 class="settings-nav__header">Settings</h3>
+    <h3 class="settings-nav__header">{{ $t("settingsPage.settings") }}</h3>
     <ul class="settings-nav__list">
       <router-link
         tag="li"
@@ -16,7 +16,9 @@
             fill="currentColor"
           ></path>
         </svg>
-        <span class="settings-nav__list-item-text">Account</span>
+        <span class="settings-nav__list-item-text">{{
+          $t("settingsPage.account")
+        }}</span>
       </router-link>
       <router-link
         tag="li"
@@ -38,7 +40,9 @@
             fill="currentColor"
           ></path>
         </svg>
-        <span class="settings-nav__list-item-text">Themes</span>
+        <span class="settings-nav__list-item-text">{{
+          $t("settingsPage.themes")
+        }}</span>
       </router-link>
       <router-link
         tag="li"
@@ -61,7 +65,9 @@
             fill="currentColor"
           ></path>
         </svg>
-        <span class="settings-nav__list-item-text">General</span>
+        <span class="settings-nav__list-item-text">{{
+          $t("settingsPage.general")
+        }}</span>
       </router-link>
       <router-link
         tag="li"
@@ -80,7 +86,9 @@
             ></path>
           </g>
         </svg>
-        <span class="settings-nav__list-item-text">Quit (q)</span>
+        <span class="settings-nav__list-item-text"
+          >{{ $t("settingsPage.quit") }} (q)</span
+        >
       </router-link>
     </ul>
   </nav>

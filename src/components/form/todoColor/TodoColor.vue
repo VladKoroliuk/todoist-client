@@ -1,6 +1,6 @@
 <template>
   <div class="selectColor">
-    <vs-select label="Color" v-model="selected">
+    <vs-select :label="$t('color')" v-model="selected">
       <vs-select-item
         v-for="(color, idx) in colors"
         :key="idx"

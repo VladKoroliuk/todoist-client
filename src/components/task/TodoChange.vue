@@ -10,12 +10,12 @@
       />
     </div>
     <div>
-      <vs-button color="primary" type="filled" @click.native="save"
-        >Save</vs-button
-      >
-      <vs-button color="dark" type="flat" @click.native="cancel"
-        >Cancel</vs-button
-      >
+      <vs-button color="primary" type="filled" @click.native="save">{{
+        $t("save")
+      }}</vs-button>
+      <vs-button color="dark" type="flat" @click.native="cancel">{{
+        $t("cancel")
+      }}</vs-button>
     </div>
   </div>
 </template>

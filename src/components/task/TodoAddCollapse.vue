@@ -6,7 +6,7 @@
       size="small"
       @click="isOpen = true"
       v-show="!isOpen"
-      >Add task</vs-button
+      >{{ $t("addTask") }}</vs-button
     >
     <vs-button
       color="dark"
@@ -14,7 +14,7 @@
       @click="isOpen = false"
       v-show="isOpen"
       size="small"
-      >Close</vs-button
+      >{{ $t("close") }}</vs-button
     >
     <div v-if="isOpen">
       <todo-add :parentID="parentID" @close="isOpen = false"></todo-add>

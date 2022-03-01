@@ -67,6 +67,16 @@ class User {
 
     await Api.request("/user/avatar", "POST", formData, "image/jpeg");
   }
+  async changeLocale(newLocale) {
+    const response = await Api.request("/user/locale", "PATCH", {
+      locale: newLocale,
+    });
+
+    const userData = this.getData;
+    userData.locale = response.data;
+
+    storage.set("userData", JSON.stringify(userData));
+  }
 }
 
 export default new User();

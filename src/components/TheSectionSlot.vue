@@ -8,13 +8,17 @@
         <slot name="header"></slot>
       </div>
       <div>
-        <vs-select class="selectExample" label="Sort by" v-model="filterField">
-          <vs-select-item :value="null" text="Without sorting" />
+        <vs-select
+          class="selectExample"
+          :label="$t('sortBy')"
+          v-model="filterField"
+        >
+          <vs-select-item :value="null" :text="$t('withoutSorting')" />
           <vs-select-item
             v-for="(field, index) in filterFileds"
             :key="index"
             :value="field"
-            :text="field"
+            :text="$t(field)"
           />
         </vs-select>
       </div>

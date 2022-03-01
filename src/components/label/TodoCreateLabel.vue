@@ -3,7 +3,7 @@
     <form>
       <div class="flex gap-3 flex-col">
         <div>
-          <vs-input placeholder="Name" label="Name" v-model="name" />
+          <vs-input :placeholder="$t('name')" label="Name" v-model="name" />
         </div>
         <div>
           <todo-color v-model="color"></todo-color>

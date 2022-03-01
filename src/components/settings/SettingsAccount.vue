@@ -9,7 +9,7 @@
       </div>
     </section>
     <section class="settings-account__name mt-11">
-      <vs-input label="Name" v-model="userData.name"></vs-input>
+      <vs-input :label="$t('name')" v-model="userData.name"></vs-input>
       <div class="mt-4">
         <vs-button v-if="userData.name != userDataCopy.name" @click="changeName"
           >Save</vs-button

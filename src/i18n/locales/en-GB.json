@@ -1,0 +1,48 @@
+{
+  "en-GB": {
+    "menu": "Menu",
+    "home": "Home",
+    "addTask": "Add task",
+    "account": "Account",
+    "theme": "Theme",
+    "general": "General",
+    "logout": "Logout",
+    "inbox": "Inbox",
+    "today": "Today",
+    "upcoming": "Upcoming",
+    "projects": "Projects",
+    "addProject": "Add project",
+    "labels": "Labels",
+    "addLabels": "Add label",
+    "settingsPage": {
+      "settings": "Settings",
+      "account": "Account",
+      "themes": "Themes",
+      "general": "General",
+      "quit": "Quit"
+    },
+    "sectionHeaders": {
+      "inboxTasks": "Inbox tasks",
+      "upcomingTasks": "Upcoming tasks",
+      "todayTasks": "Today tasks"
+    },
+    "subTasks": "Sub tasks",
+    "comments": "Comments",
+    "title": "Title",
+    "description": "Description",
+    "deadline": "Deadline",
+    "project": "Project",
+    "priority": "Priority",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "send": "Send",
+    "edit": "Edit",
+    "name": "Name",
+    "color": "Color",
+    "sortBy": "Sort by",
+    "withoutSorting": "Without sorting",
+    "text": "Text",
+    "language": "Language"
+  }
+}

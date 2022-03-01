@@ -1,0 +1,48 @@
+{
+  "ru-RU": {
+    "menu": "Меню",
+    "home": "Домой",
+    "addTask": "Добавить задачу",
+    "account": "Акаунт",
+    "theme": "Тема",
+    "general": "Основное",
+    "logout": "Выйти",
+    "inbox": "Входящие",
+    "today": "Сегодня",
+    "upcoming": "Предстоящее",
+    "projects": "Проекты",
+    "addProject": "Добавить проект",
+    "labels": "Метки",
+    "addLabels": "Добавить метку",
+    "settingsPage": {
+      "settings": "Настройки",
+      "account": "Аккаунт",
+      "themes": "Темы",
+      "general": "Основоное",
+      "quit": "Выйти"
+    },
+    "sectionHeaders": {
+      "inboxTasks": "Входящие",
+      "upcomingTasks": "Предстоящее",
+      "todayTasks": "Сегодня"
+    },
+    "subTasks": "Подзадачи",
+    "comments": "Комментарии",
+    "title": "Заголовок",
+    "description": "Описание",
+    "deadline": "Срок",
+    "project": "Проект",
+    "priority": "Приоритет",
+    "close": "Закрыть",
+    "save": "Сохранить",
+    "cancel": "Отмена",
+    "send": "Отправить",
+    "edit": "Изменить",
+    "name": "Имя",
+    "color": "Цвет",
+    "sortBy": "Сортировать по",
+    "withoutSorting": "Без сортировки",
+    "text": "Текст",
+    "language": "Язык"
+  }
+}

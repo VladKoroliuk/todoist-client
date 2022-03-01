@@ -10,13 +10,13 @@
         <button class="header-btn" @click="$emit('toggleMenu')">
           <img :src="require('@/assets/icons/menu.svg')" class="header-ico" />
           <div class="header-btn__prompt">
-            Menu <span class="header-btn__key">M</span>
+            {{ $t("menu") }} <span class="header-btn__key">M</span>
           </div>
         </button>
         <button class="header-btn">
           <img :src="require('@/assets/icons/home.svg')" class="header-ico" />
           <div class="header-btn__prompt">
-            Home <span class="header-btn__key">H</span>
+            {{ $t("home") }} <span class="header-btn__key">H</span>
           </div>
         </button>
       </div>
@@ -24,7 +24,7 @@
         <button class="header-btn" @click="addTaskPopup = true">
           <img :src="require('@/assets/icons/plus.svg')" class="header-ico" />
           <div class="header-btn__prompt">
-            Add task <span class="header-btn__key">A</span>
+            {{ $t("addTask") }} <span class="header-btn__key">A</span>
           </div>
         </button>
         <div v-click-outside="closeProfileMenu">
@@ -72,7 +72,7 @@
                       ></path>
                     </svg>
                   </div>
-                  <div>Account</div>
+                  <div>{{ $t("account") }}</div>
                 </li>
               </router-link>
               <router-link :to="{ name: 'SettingsTheme' }">
@@ -93,7 +93,7 @@
                       ></path>
                     </svg>
                   </div>
-                  <div>Theme</div>
+                  <div>{{ $t("theme") }}</div>
                 </li>
               </router-link>
               <router-link :to="{ name: 'SettingsGeneral' }">
@@ -115,7 +115,7 @@
                       ></path>
                     </svg>
                   </div>
-                  <div>General</div>
+                  <div>{{ $t("general") }}</div>
                 </li>
               </router-link>
               <li class="user-profile-menu__item">
@@ -133,7 +133,7 @@
                     </g>
                   </svg>
                 </div>
-                <div>Logout</div>
+                <div>{{ $t("logout") }}</div>
               </li>
             </ul>
           </div>

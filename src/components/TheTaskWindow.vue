@@ -61,19 +61,19 @@
                 class="task-navigation__item"
                 active-class="task-navigation__item_active"
                 :to="{ name: 'TodoSub' }"
-                >Sub tasks</router-link
+                >{{ $t("subTasks") }}</router-link
               >
               <router-link
                 class="task-navigation__item"
                 active-class="task-navigation__item_active"
                 :to="{ name: 'TodoComments' }"
-                >Comments</router-link
+                >{{ $t("comments") }}</router-link
               >
               <router-link
                 class="task-navigation__item"
                 active-class="task-navigation__item_active"
                 :to="{ name: 'TodoLabels' }"
-                >Labels</router-link
+                >{{ $t("labels") }}</router-link
               >
             </nav>
             <div class="task-menu__content">
