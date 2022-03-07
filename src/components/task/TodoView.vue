@@ -36,7 +36,7 @@
     </div>
     <div class="task__menu">
       <div>
-        <div class="task__menu-handler">
+        <div class="task__menu-handler" @click.stop>
           <svg width="24" height="24">
             <path
               class="handler_path"
