@@ -10,7 +10,15 @@ class User {
     return true;
   }
   get getData() {
-    return storage.get("userData");
+    const data = storage.get("userData");
+
+    if (data == null) {
+      return {
+        locale: "en-GB",
+      };
+    }
+
+    return data;
   }
   get avatar() {
     const url = new URL(
