@@ -10,7 +10,7 @@ function setSubsequence(newList) {
 
   if (oldSubsequence == null) {
     storage.set("subsequence", JSON.stringify(subsequenceData));
-    return subsequenceData;
+    return getSubsequence(newList);
   }
 
   for (let item in oldSubsequence) {
