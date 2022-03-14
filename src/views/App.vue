@@ -33,6 +33,7 @@ export default {
   created() {
     this.$store.dispatch("loadTodos");
     this.$store.dispatch("loadLabels");
+    this.$store.dispatch("loadProjects");
 
     if (this.$route.name == "App") {
       this.$router.push({ name: "Today" });

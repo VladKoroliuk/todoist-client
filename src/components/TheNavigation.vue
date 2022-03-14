@@ -3,6 +3,11 @@
     <vs-popup :active.sync="modal.createLabel" title="">
       <todo-create-label @close="modal.createLabel = false"></todo-create-label>
     </vs-popup>
+    <vs-popup :active.sync="modal.createProject" title="">
+      <todo-create-project
+        @close="modal.createProject = false"
+      ></todo-create-project>
+    </vs-popup>
     <div>
       <ul class="navigation__section-list">
         <li class="navigation__section-list_item">
@@ -97,8 +102,11 @@
         <vs-collapse-item>
           <div slot="header">{{ $t("projects") }}</div>
           <div class="flex">
-            <button class="btn-small my-2">{{ $t("addProject") }}</button>
+            <button class="btn-small my-2" @click="modal.createProject = true">
+              {{ $t("addProject") }}
+            </button>
           </div>
+          <todo-project-list></todo-project-list>
         </vs-collapse-item>
         <vs-collapse-item>
           <div slot="header">{{ $t("labels") }}</div>
@@ -115,7 +123,9 @@
 </template>
 <script>
 import TodoCreateLabel from "./label/TodoCreateLabel.vue";
+import TodoCreateProject from "./project/TodoCreateProject.vue";
 import TodoLabelList from "./label/TodoLabelList.vue";
+import TodoProjectList from "./project/TodoProjectList.vue";
 export default {
   name: "AppNavigation",
   props: {
@@ -128,6 +138,8 @@ export default {
   components: {
     TodoCreateLabel,
     TodoLabelList,
+    TodoCreateProject,
+    TodoProjectList,
   },
   data: () => ({
     modal: {

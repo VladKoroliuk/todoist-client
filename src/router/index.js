@@ -20,6 +20,7 @@ import TheSectionUpcoming from "../components/TheSectionUpcoming.vue";
 import SettingsAccount from "../components/settings/SettingsAccount.vue";
 import SettingsTheme from "../components/settings/SettingsTheme.vue";
 import SettingsGeneral from "../components/settings/SettingsGeneral.vue";
+import ProjectSection from "../components/project/TodoProjectSection.vue";
 
 Vue.use(VueRouter);
 
@@ -108,6 +109,12 @@ const routes = [
         path: "label/:labelID",
         name: "Label",
         component: TheSectionLabel,
+        children: [taskMenuRoutes],
+      },
+      {
+        path: "project/:projectID",
+        name: "Project",
+        component: ProjectSection,
         children: [taskMenuRoutes],
       },
     ],
