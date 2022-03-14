@@ -3,7 +3,6 @@
     <h3 class="settings-nav__header">{{ $t("settingsPage.settings") }}</h3>
     <ul class="settings-nav__list">
       <router-link
-        tag="li"
         :to="{ name: 'SettingsAccount' }"
         class="settings-nav__list-item"
         active-class="settings-nav__list-item_active"
@@ -21,7 +20,6 @@
         }}</span>
       </router-link>
       <router-link
-        tag="li"
         :to="{ name: 'SettingsTheme' }"
         class="settings-nav__list-item"
         active-class="settings-nav__list-item_active"
@@ -45,7 +43,6 @@
         }}</span>
       </router-link>
       <router-link
-        tag="li"
         :to="{ name: 'SettingsGeneral' }"
         class="settings-nav__list-item"
         active-class="settings-nav__list-item_active"
@@ -69,11 +66,7 @@
           $t("settingsPage.general")
         }}</span>
       </router-link>
-      <router-link
-        tag="li"
-        :to="{ name: 'App' }"
-        class="settings-nav__list-item"
-      >
+      <router-link :to="{ name: 'App' }" class="settings-nav__list-item">
         <svg width="24" height="24" aria-hidden="true">
           <g fill="none" fill-rule="evenodd">
             <path

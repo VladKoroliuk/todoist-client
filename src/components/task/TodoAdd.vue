@@ -72,6 +72,11 @@ export default {
       required: false,
       default: null,
     },
+    label: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   methods: {
     add() {
@@ -80,8 +85,9 @@ export default {
         description: this.description,
         term: this.deadline,
         priority: this.priority,
+        labels: [this.label],
       };
-
+      console.log(newTask);
       if (this.parentID) {
         newTask.parentID = this.parentID;
       }

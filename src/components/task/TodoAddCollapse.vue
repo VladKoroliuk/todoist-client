@@ -17,7 +17,11 @@
       >{{ $t("close") }}</vs-button
     >
     <div v-if="isOpen">
-      <todo-add :parentID="parentID" @close="isOpen = false"></todo-add>
+      <todo-add
+        :parentID="parentID"
+        :label="label"
+        @close="isOpen = false"
+      ></todo-add>
     </div>
   </div>
 </template>
@@ -29,6 +33,11 @@ export default {
   },
   props: {
     parentID: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    label: {
       type: String,
       required: false,
       default: null,

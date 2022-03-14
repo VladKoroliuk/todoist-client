@@ -27,7 +27,7 @@
       <todo-list :tasks="sortedTasks"></todo-list>
     </div>
     <div>
-      <todo-add-collapse></todo-add-collapse>
+      <todo-add-collapse :label="labelID"></todo-add-collapse>
     </div>
   </div>
 </template>
@@ -54,6 +54,12 @@ export default {
     filterField: null,
   }),
   computed: {
+    labelID() {
+      if (this.$route.name != "Label") {
+        return null;
+      }
+      return this.$route.params.labelID;
+    },
     sortedTasks() {
       const tasks = [...this.tasks];
       const filter = this.filterField;
