@@ -32,10 +32,43 @@ export default {
       type: Array,
       required: true,
     },
+    filter: {
+      required: false,
+    },
   },
   watch: {
     tasks(newList) {
       this.tasksTemp = newList;
+    },
+  },
+  methods: {
+    sortTasks(tasks, filter) {
+      if (filter == null) {
+        return tasks;
+      }
+
+      tasks.sort((a, b) => {
+        if (typeof a[filter] != typeof b[filter]) {
+          return 0;
+        }
+
+        switch (typeof a[filter]) {
+          case "number":
+            return b[filter] - a[filter];
+          case "string":
+            if (a[filter] < b[filter]) {
+              return -1;
+            }
+            if (a[filter] > b[filter]) {
+              return 1;
+            }
+            return;
+          default:
+            return 0;
+        }
+      });
+
+      return tasks;
     },
   },
   data() {
@@ -46,7 +79,7 @@ export default {
   computed: {
     taskList: {
       get() {
-        return getSubsequence(this.tasksTemp);
+        return this.sortTasks(getSubsequence(this.tasksTemp), this.filter);
       },
       set(newList) {
         this.tasksTemp = setSubsequence(newList);

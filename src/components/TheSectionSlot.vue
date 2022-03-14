@@ -24,7 +24,7 @@
       </div>
     </header>
     <div>
-      <todo-list :tasks="sortedTasks"></todo-list>
+      <slot name="body" :filter="filterField"></slot>
     </div>
     <div>
       <todo-add-collapse :label="labelID"></todo-add-collapse>
@@ -33,17 +33,11 @@
 </template>
 <script>
 import TodoAddCollapse from "./task/TodoAddCollapse.vue";
-import TodoList from "./task/TodoList.vue";
 export default {
   components: {
     TodoAddCollapse,
-    TodoList,
   },
   props: {
-    tasks: {
-      type: Array,
-      required: true,
-    },
     filterFileds: {
       type: Array,
       required: false,
@@ -59,37 +53,6 @@ export default {
         return null;
       }
       return this.$route.params.labelID;
-    },
-    sortedTasks() {
-      const tasks = [...this.tasks];
-      const filter = this.filterField;
-
-      if (filter == null) {
-        return tasks;
-      }
-
-      tasks.sort((a, b) => {
-        if (typeof a[filter] != typeof b[filter]) {
-          return 0;
-        }
-
-        switch (typeof a[filter]) {
-          case "number":
-            return b[filter] - a[filter];
-          case "string":
-            if (a[filter] < b[filter]) {
-              return -1;
-            }
-            if (a[filter] > b[filter]) {
-              return 1;
-            }
-            return;
-          default:
-            return 0;
-        }
-      });
-
-      return tasks;
     },
   },
 };
