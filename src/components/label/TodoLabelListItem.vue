@@ -48,7 +48,17 @@ export default {
   },
   methods: {
     deleteLabel() {
-      this.$store.dispatch("deleteLabel", this.label._id);
+      this.$vs.dialog({
+        color: "danger",
+        title: `Are you sure?`,
+        text: "Are you sure to delete this label permanently?",
+        accept: () => {
+          this.$store.dispatch("deleteLabel", this.label._id);
+          this.$vs.notify({
+            title: `Label ${this.label.name} was deleted`,
+          });
+        },
+      });
     },
   },
 };
