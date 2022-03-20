@@ -26,7 +26,7 @@
           />
         </div>
         <div class="flex gap-4">
-          <vs-select :label="$t('project')" v-model="project">
+          <vs-select :label="$t('project')" v-model="projectState">
             <vs-select-item value="test" text="test" />
           </vs-select>
           <vs-select :label="$t('priority')" v-model="priority">
@@ -46,14 +46,15 @@
 <script>
 import SimpleVueValidation from "simple-vue-validator";
 import FormError from "../form/FormError.vue";
+import { mapState } from "vuex";
 export default {
   data: () => ({
     title: "",
     description: "",
     error: "",
-    project: null,
     priority: 1,
     deadline: null,
+    projectState: null,
   }),
   validators: {
     title(value) {
@@ -77,6 +78,16 @@ export default {
       required: false,
       default: null,
     },
+    project: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    projectSection: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
   methods: {
     add() {
@@ -86,8 +97,9 @@ export default {
         term: this.deadline,
         priority: this.priority,
         labels: [this.label],
+        project: this.projectState,
+        projectSection: this.projectSection,
       };
-      console.log(newTask);
       if (this.parentID) {
         newTask.parentID = this.parentID;
       }
@@ -98,7 +110,7 @@ export default {
           this.title = "";
           this.description = "";
           this.priority = 1;
-          this.project = null;
+          this.projectState = null;
           this.$emit("close");
           return;
         }
@@ -106,12 +118,14 @@ export default {
     },
   },
   computed: {
+    ...mapState(["projects"]),
     todayDate() {
       return this.$moment().format("Y-MM-D");
     },
   },
   mounted() {
     this.deadline = this.todayDate;
+    this.projectState = this.project;
   },
 };
 </script>

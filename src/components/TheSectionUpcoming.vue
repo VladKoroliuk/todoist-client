@@ -12,7 +12,11 @@
         <todo-list
           :tasks="$store.getters.upcomingTasks"
           :filter="slotProps.filter"
-        ></todo-list>
+        >
+          <template #footer>
+            <todo-add-collapse></todo-add-collapse>
+          </template>
+        </todo-list>
       </template>
     </section-slot>
   </div>
@@ -20,10 +24,12 @@
 <script>
 import SectionSlot from "./TheSectionSlot.vue";
 import TodoList from "./task/TodoList.vue";
+import TodoAddCollapse from "./task/TodoAddCollapse.vue";
 export default {
   components: {
     SectionSlot,
     TodoList,
+    TodoAddCollapse,
   },
 };
 </script>

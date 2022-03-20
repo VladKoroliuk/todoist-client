@@ -26,17 +26,10 @@
     <div>
       <slot name="body" :filter="filterField"></slot>
     </div>
-    <div>
-      <todo-add-collapse :label="labelID"></todo-add-collapse>
-    </div>
   </div>
 </template>
 <script>
-import TodoAddCollapse from "./task/TodoAddCollapse.vue";
 export default {
-  components: {
-    TodoAddCollapse,
-  },
   props: {
     filterFileds: {
       type: Array,
@@ -47,12 +40,12 @@ export default {
   data: () => ({
     filterField: null,
   }),
-  computed: {
-    labelID() {
-      if (this.$route.name != "Label") {
+  methods: {
+    getParams(routeName, paramField) {
+      if (this.$route.name != routeName) {
         return null;
       }
-      return this.$route.params.labelID;
+      return this.$route.params[paramField];
     },
   },
 };

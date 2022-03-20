@@ -91,5 +91,24 @@ export default {
     countTasksByLabel: (state, getters) => (labelID) => {
       return getters.getTasksByLabel(labelID).length;
     },
+    getByProject: (state, getters) => (projectID) => {
+      return getters.parentTasks.filter((task) => task.project == projectID);
+    },
+    getSectionsTasks: (state, getters) => {
+      const result = new Map();
+      for (let idx in getters.parentTasks) {
+        const task = state.todos[idx];
+
+        if (!task.projectSection) continue;
+
+        const sectionTasks = getters.parentTasks.filter(
+          (t) => t.projectSection == task.projectSection
+        );
+
+        result.set(task.projectSection, sectionTasks);
+      }
+      console.log(result);
+      return result;
+    },
   },
 };

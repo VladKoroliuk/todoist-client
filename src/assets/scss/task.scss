@@ -102,6 +102,59 @@
     }
   }
 }
-.add-task-collapse{
-  margin-top: 40px;
+.list-section-title {
+  font-weight: bold;
+  font-size: 15px;
+}
+.task-list {
+  padding-bottom: 40px;
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+  &__task-count {
+    font-size: 12px;
+  }
+  &__dropdown {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg);
+    &_active {
+      transform: rotate(0);
+    }
+  }
+  &__dropdown-svg {
+    &:hover {
+      background-color: #d8d8d8;
+    }
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  &__header-content {
+    display: flex;
+    gap: 3px;
+  }
+}
+.add-task-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  &:hover {
+    .add-task-button__ico {
+      background-color: $primary;
+      color: #FFF;
+    }
+  }
+  &__ico {
+    color: $primary;
+    padding: 3px;
+    border-radius: 10px;
+  }
+  &__text {
+    font-size: 0.875rem;
+    color: gray;
+  }
 }
