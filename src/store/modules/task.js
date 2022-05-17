@@ -107,7 +107,6 @@ export default {
 
         result.set(task.projectSection, sectionTasks);
       }
-      console.log(result);
       return result;
     },
   },
