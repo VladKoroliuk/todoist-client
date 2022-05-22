@@ -4,11 +4,7 @@
       <router-link :to="{ name: 'Settings' }">
         <li class="user-profile-menu__item-header">
           <div class="user-profile-menu__ico">
-            <vs-avatar
-              :text="user.name.slice(0, 1)"
-              color="success"
-              size="40px"
-            ></vs-avatar>
+            <todo-avatar size="40px"></todo-avatar>
           </div>
           <div>
             <div>
@@ -97,6 +93,7 @@
   </div>
 </template>
 <script>
+import TodoAvatar from "../TodoAvatar.vue";
 export default {
   name: "HeaderMenu",
   props: {
@@ -104,6 +101,9 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  components: {
+    TodoAvatar,
   },
 };
 </script>

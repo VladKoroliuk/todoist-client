@@ -31,6 +31,10 @@ export default {
       return userService.getData;
     },
   },
+  provide: {
+    userData: userService.getData,
+    avatarURL: userService.avatar,
+  },
   methods: {
     toggleMenu() {
       this.menu = !this.menu;

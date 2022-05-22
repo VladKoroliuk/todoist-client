@@ -2,7 +2,7 @@
   <div class="settings-account">
     <section class="settings-account__avatar-section">
       <div>
-        <vs-avatar color="primary" :src="avatarLink" size="70px"></vs-avatar>
+        <todo-avatar size="70px"></todo-avatar>
       </div>
       <div class="flex gap-3">
         <vs-input type="file" @change="changeAvatar($event)"></vs-input>
@@ -19,6 +19,7 @@
   </div>
 </template>
 <script>
+import TodoAvatar from "../TodoAvatar.vue";
 import userService from "../../services/user.js";
 export default {
   data() {
@@ -31,6 +32,9 @@ export default {
     avatarLink() {
       return userService.avatar;
     },
+  },
+  components: {
+    TodoAvatar,
   },
   methods: {
     async changeName() {

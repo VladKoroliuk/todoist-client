@@ -27,12 +27,8 @@
           @click="addTaskPopup = true"
         />
         <div v-click-outside="closeProfileMenu">
-          <button>
-            <vs-avatar
-              color="success"
-              :text="user.name.slice(0, 1)"
-              @click="isProfileMenuOpen = true"
-            />
+          <button @click="isProfileMenuOpen = true">
+            <todo-avatar></todo-avatar>
           </button>
           <header-menu :user="user" v-if="isProfileMenuOpen" />
         </div>
@@ -41,10 +37,10 @@
   </div>
 </template>
 <script>
-import userService from "../services/user.js";
 import TodoAdd from "./task/TodoAdd.vue";
 import HeaderButton from "./header/HeaderButton.vue";
 import HeaderMenu from "./header/HeaderMenu.vue";
+import TodoAvatar from "./TodoAvatar.vue";
 import {
   subscribeHotKey,
   getKeyByCode,
@@ -63,9 +59,6 @@ export default {
     },
   },
   computed: {
-    avatarLink() {
-      return userService.avatar;
-    },
     keys() {
       return DEFAULT_KEYS;
     },
@@ -87,6 +80,7 @@ export default {
     TodoAdd,
     HeaderButton,
     HeaderMenu,
+    TodoAvatar,
   },
 };
 </script>
