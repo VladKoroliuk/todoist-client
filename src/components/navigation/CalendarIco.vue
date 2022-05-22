@@ -45,7 +45,6 @@ export default {
   name: "CalendarIco",
   props: {
     day: {
-      type: Number,
       required: true,
     },
   },
